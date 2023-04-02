@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 use App\Actions\Fortify\AttemptToAuthenticate;
-use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable; 
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Controllers\AdminController;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Auth;

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 // ADMIN ROUTE
-Route::middleware('admin:admin')->group(function(){
-    Route::get('admin/login',[AdminController::class, 'loginForm']);
-    Route::post('admin/login',[AdminController::class, 'store'])->name('admin.login');
-    
-});
-Route::middleware([
-    'auth:sanctum,admin',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
+    Route::get('/login',[AdminController::class, 'loginForm']);
 });
 Route::middleware([
     'auth:sanctum',

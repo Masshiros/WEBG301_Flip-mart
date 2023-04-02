@@ -20,9 +20,7 @@ Route::get('/', function () {
 // ADMIN ROUTE
 Route::middleware('admin:admin')->group(function(){
     Route::get('admin/login',[AdminController::class, 'loginForm']);
-    Route::post('admin/login',[AdminController::class, 'store'])->name('admin.login');
-    
-});
+})
 Route::middleware([
     'auth:sanctum,admin',
     config('jetstream.auth_session'),
