@@ -4,8 +4,8 @@
             Hi {{ Auth::user()->name }}
         </h2>
     </x-slot>
-    <div class="py-12">
-        Home Page
+    <div>
+
     </div>
 
 </x-app-layout>
