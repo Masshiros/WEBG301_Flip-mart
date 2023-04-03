@@ -33,7 +33,7 @@ Route::middleware([
     })->name('dashboard')->middleware('auth:admin');
 });
 Route::middleware([
-    'auth:sanctum',
+    'auth:sanctum,web',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
