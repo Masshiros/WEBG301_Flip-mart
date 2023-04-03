@@ -30,7 +30,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard')->middleware('auth:admin');
+    })->name('dashboard')
 });
 Route::middleware([
     'auth:sanctum',
