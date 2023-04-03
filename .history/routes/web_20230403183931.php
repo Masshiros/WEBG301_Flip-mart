@@ -33,8 +33,8 @@ Route::middleware([
     })->name('dashboard')->middleware('auth:admin');
 });
 // ADMIN ALL ROUTES
-// 1) Logout
-Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
+Route::get('/admin/logout', [AdminController::class, 'loginForm'])->name('admin.logout');
 
 Route::middleware([
     'auth:sanctum,web',
