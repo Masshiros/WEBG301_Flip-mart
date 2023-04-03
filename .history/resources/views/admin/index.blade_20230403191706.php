@@ -200,7 +200,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0 mr-20">
                                                     <div class="bg-img h-50 w-50"
-                                                        style="background-image: url( {{ asset('backend/images/gallery/creative/img-3.jpg') }} )">
+                                                        style="background-image: url(../images/gallery/creative/img-3.jpg)">
                                                     </div>
                                                 </div>
 
@@ -254,7 +254,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0 mr-20">
                                                     <div class="bg-img h-50 w-50"
-                                                        style="background-image: url( {{ asset('backend/images/gallery/creative/img-4.jpg') }} )">
+                                                        style="background-image: url(../images/gallery/creative/img-4.jpg)">
                                                     </div>
                                                 </div>
 
@@ -308,7 +308,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0 mr-20">
                                                     <div class="bg-img h-50 w-50"
-                                                        style="background-image: url( {{ asset('backend/images/gallery/creative/img-5.jpg') }} )">
+                                                        style="background-image: url(../images/gallery/creative/img-5.jpg)">
                                                     </div>
                                                 </div>
 
