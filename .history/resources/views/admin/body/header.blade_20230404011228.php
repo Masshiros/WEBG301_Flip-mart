@@ -110,7 +110,7 @@
                     </ul>
                 </li>
                 @php
-                $adminData = DB::table('admins')->first();
+                $adminData = DB::table('admins')
                 @endphp
                 <!-- User Account-->
                 <li class="dropdown user user-menu">

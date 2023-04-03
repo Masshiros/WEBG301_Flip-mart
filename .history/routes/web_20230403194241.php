@@ -36,12 +36,7 @@ Route::middleware([
 // ADMIN ALL ROUTES
 // 1) Logout
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
-// 2) Show profile 
-Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
-// 3) Edit profile
-Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
-// 4) Store profile 
-Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
+Route::get('/admin/logout', [AdminProfileController::class, 'destroy'])->name('admin.logout');
 
 Route::middleware([
     'auth:sanctum,web',

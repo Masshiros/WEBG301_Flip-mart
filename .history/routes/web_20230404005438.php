@@ -41,7 +41,7 @@ Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->n
 // 3) Edit profile
 Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
 // 4) Store profile 
-Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
+Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.edit');
 
 Route::middleware([
     'auth:sanctum,web',

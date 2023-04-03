@@ -109,9 +109,7 @@
                         </li>
                     </ul>
                 </li>
-                @php
-                $adminData = DB::table('admins')->first();
-                @endphp
+                @<?php  ?>
                 <!-- User Account-->
                 <li class="dropdown user user-menu">
                     <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown"
