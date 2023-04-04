@@ -44,8 +44,8 @@ Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileE
 Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
 // 5) Change password of admin
 Route::get('/admin/change/password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
-// 6) Update change password 
-Route::post('/admin/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
+// 6) Store profile 
+Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
 
 Route::middleware([
     'auth:sanctum,web',
