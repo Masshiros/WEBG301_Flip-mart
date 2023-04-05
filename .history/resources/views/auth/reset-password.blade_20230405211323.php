@@ -25,7 +25,7 @@
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
 		<div class="form-group">
 		    <label class="info-title" for="email">Email Address <span>*</span></label>
-		    <input type="email" id="email"  class="form-control unicase-form-control text-input" name="email">
+		    <input type="email" id="email" value="old('email', $request->email)" class="form-control unicase-form-control text-input" name="email">
 		</div>
 		<div class="form-group">
 		    <label class="info-title" for="password">Password <span>*</span></label>

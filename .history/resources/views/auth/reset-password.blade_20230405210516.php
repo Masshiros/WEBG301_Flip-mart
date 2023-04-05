@@ -22,21 +22,20 @@
 
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 		<div class="form-group">
 		    <label class="info-title" for="email">Email Address <span>*</span></label>
-		    <input type="email" id="email"  class="form-control unicase-form-control text-input" name="email">
+		    <input type="email" id="email" class="form-control unicase-form-control text-input" name="email">
 		</div>
 		<div class="form-group">
-		    <label class="info-title" for="password">Password <span>*</span></label>
-		    <input type="password" id="password" class="form-control unicase-form-control text-input" name="password">
+		    <label class="info-title" for="email">Password <span>*</span></label>
+		    <input type="email" id="email" class="form-control unicase-form-control text-input" name="email">
 		</div>
 		<div class="form-group">
-		    <label class="info-title" for="password_confirmation">Confirm Password <span>*</span></label>
-		    <input type="password" id="password_confirmation" class="form-control unicase-form-control text-input" name="password_confirmation">
+		    <label class="info-title" for="email">Confirm Password <span>*</span></label>
+		    <input type="email" id="email" class="form-control unicase-form-control text-input" name="email">
 		</div>
 
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Reset Password</button>
+	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{ __('Email Password Reset Link') }}</button>
 	</form>					
 </div>
 <!-- Sign-in -->
