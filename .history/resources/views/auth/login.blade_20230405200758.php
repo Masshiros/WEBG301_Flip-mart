@@ -93,7 +93,7 @@
          <div class="form-group">
 		    <label class="info-title" for="password_confirmation">Confirm Password <span>*</span></label>
 		    <input type="password" name="password_confirmation" class="form-control unicase-form-control text-input" id="password_confirmation" >
-			@error('password_confirmation')
+			@error('name')
 			<span class="invalid-feedback" role="alert">
 				<strong>{{ $message }}</strong>
 			</span>

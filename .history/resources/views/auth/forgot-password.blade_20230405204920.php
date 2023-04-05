@@ -27,7 +27,7 @@
 		    <input type="email" id="email" class="form-control unicase-form-control text-input" name="email">
 		</div>
 
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{ __('Email Password Reset Link') }}</button>
+	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
 	</form>					
 </div>
 <!-- Sign-in -->

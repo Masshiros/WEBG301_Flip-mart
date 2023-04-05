@@ -65,7 +65,7 @@
 		<div class="form-group">
 	    	<label class="info-title" for="email">Email Address <span>*</span></label>
 	    	<input type="email" name="email" class="form-control unicase-form-control text-input" id="email" >
-			@error('email')
+			@error('name')
 			<span class="invalid-feedback" role="alert">
 				<strong>{{ $message }}</strong>
 			</span>
@@ -84,20 +84,10 @@
         <div class="form-group">
 		    <label class="info-title" for="password">Password <span>*</span></label>
 		    <input type="password" name="password" class="form-control unicase-form-control text-input" id="password" >
-			@error('password')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
 		</div>
          <div class="form-group">
 		    <label class="info-title" for="password_confirmation">Confirm Password <span>*</span></label>
 		    <input type="password" name="password_confirmation" class="form-control unicase-form-control text-input" id="password_confirmation" >
-			@error('password_confirmation')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
 		</div>
 	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
 	</form>

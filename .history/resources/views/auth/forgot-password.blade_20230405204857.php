@@ -20,14 +20,14 @@
 	<h4 class="">Forget Password</h4>
 	<p class="">Forgot your password? No Problem</p>
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login')  }}">
         @csrf
 		<div class="form-group">
 		    <label class="info-title" for="email">Email Address <span>*</span></label>
 		    <input type="email" id="email" class="form-control unicase-form-control text-input" name="email">
 		</div>
 
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{ __('Email Password Reset Link') }}</button>
+	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
 	</form>					
 </div>
 <!-- Sign-in -->
