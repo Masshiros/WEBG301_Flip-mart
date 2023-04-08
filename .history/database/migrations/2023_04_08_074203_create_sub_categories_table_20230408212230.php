@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
             $table->integer('category_id');
+            $table->foreign('country_id')
+        ->references('id')->on('countries')->onDelete('cascade');
             $table->string('subcategory_name_en');
             $table->string('subcategory_name_cn');
             $table->string('subcategory_name_vn');
