@@ -41,7 +41,7 @@
                 </ul>
             </li>
 
-            <li class="treeview {{($prefix == '/category') ? 'active' : ''}}">
+            <li class="treeview {{($prefix == '/brand') ? 'active' : ''}}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Category</span>
                     <span class="pull-right-container">
@@ -49,8 +49,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ ($route == 'all.category')? 'active' : '' }}"><a href="{{route('all.category')}}"><i class="ti-more"></i>All Category</a></li>
-                   
+                    <li><a href="mailbox_inbox.html"><i class="ti-more"></i>All Category</a></li>
+                    <li><a href="mailbox_compose.html"><i class="ti-more"></i>Compose</a></li>
+                    <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li>
                 </ul>
             </li>
 

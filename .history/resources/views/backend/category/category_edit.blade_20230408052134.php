@@ -6,65 +6,64 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">      
-        <!---------------EDIT BRAND PAGE------------>
+      <div class="row">
+        <!-- /.col -->
+        <!---------------EDIT CATEGORY PAGE------------>
         <div class="col-12">
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Edit brand</h3>
+                 <h3 class="box-title">Edit Category</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                    <form method="POST" action="{{route('brand.update')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('category.store')}}" >
                         @csrf
-                        <input type="hidden" name="id" value="{{$brand->id}}">
-                        <input type="hidden" name="old_image" value="{{$brand->brand_image}}">
                             <div class="form-group">
-                                <h5>Brand Name English<span class="text-danger">*</span></h5>
+                                <h5>Category Name English<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input value="{{$brand->brand_name_en}}" type="text"  name="brand_name_en"
-                                            class="form-control">
-                                            @error('brand_name_en')
+                                        <input type="text"  name="category_name_en"
+                                            class="form-control" value="{{$category->category_name_en}}">
+                                            @error('category_name_en')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
                             </div>
                             <div class=" form-group">
-                                    <h5>Brand Name Vietnamese <span class="text-danger">*</span></h5>
+                                    <h5>Category Name Vietnamese <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input value="{{$brand->brand_name_vn}}" type="text"  name="brand_name_vn"
-                                            class="form-control"  ">
-                                                @error('brand_name_vn')
+                                        <input type="text"  name="category_name_vn"
+                                            class="form-control" value="{{$category->category_name_vn}}">
+                                                @error('category_name_vn')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                     </div>
                             </div>
                                         <div class=" form-group">
-                                                <h5>Brand Name Chinese <span class="text-danger">*</span></h5>
+                                                <h5>Category Name Chinese <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input value="{{$brand->brand_name_cn}}" type="text"  name="brand_name_cn"
-                                                        class="form-control"  ">
-                                                        @error('brand_name_cn')
+                                                    <input type="text"  name="category_name_cn"
+                                                        class="form-control"  value="{{$category->category_name_cn}}">
+                                                        @error('category_name_cn')
                                                             <span class="text-danger">{{$message}}</span>
                                                          @enderror
                                             </div>
                                         </div>
                                         <div class=" form-group">
-                                                    <h5>Brand Image <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="file" 
-                                                            name="brand_image" class="form-control"
-                                                            >
-                                                        @error('brand_image')
+                                                <h5>Category Icon <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="text"  name="category_icon"
+                                                        class="form-control"  ">
+                                                        @error('category_icon')
                                                             <span class="text-danger">{{$message}}</span>
-                                                        @enderror
+                                                         @enderror
                                             </div>
                                         </div>
+                                     
                                         <div class=" text-xs-right">
                                                         <input type="submit"
-                                                            class="btn btn-rounded btn-primary mb-5" value="Update">
+                                                            class="btn btn-rounded btn-primary mb-5" value="Add New">
                                         </div>
                     </form>
                    </div>

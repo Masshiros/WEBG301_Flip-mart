@@ -7,12 +7,12 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">      
-        <!---------------EDIT BRAND PAGE------------>
+        <!---------------EDIT CATEGORY PAGE------------>
         <div class="col-12">
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Edit brand</h3>
+                 <h3 class="box-title">Edit Category</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">

@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -95,15 +95,15 @@ Route::prefix('brand')->group(function () {
 
 // ADMIN CATEGORY ALL ROUTES
 Route::prefix('category')->group(function () {
-    //1) Display All CATEGORY
+    //1) Display All Brand
     Route::get('/view', [CategoryController::class, 'CategoryView'])->name('all.category');
-    //2 ) ADD NEW CATEGORY
+    //2 ) ADD NEW BRAND
     Route::post('/store', [CategoryController::class, 'CategoryStore'])->name('category.store');
-    //3) SHOW EDIT CATEGORY PAGE
+    //3) SHOW EDIT BRAND PAGE
     Route::get('/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('category.edit');
-    //4) UPDATE CATEGORY IN DATABASE
+    //4) UPDATE BRAND IN DATABASE
     Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
-    //5) DELETE CATEGORY
+    //5) DELETE BRAND
     Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
 
 });

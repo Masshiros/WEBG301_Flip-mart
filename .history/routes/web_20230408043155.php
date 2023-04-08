@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -95,15 +94,15 @@ Route::prefix('brand')->group(function () {
 
 // ADMIN CATEGORY ALL ROUTES
 Route::prefix('category')->group(function () {
-    //1) Display All CATEGORY
-    Route::get('/view', [CategoryController::class, 'CategoryView'])->name('all.category');
-    //2 ) ADD NEW CATEGORY
-    Route::post('/store', [CategoryController::class, 'CategoryStore'])->name('category.store');
-    //3) SHOW EDIT CATEGORY PAGE
-    Route::get('/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('category.edit');
-    //4) UPDATE CATEGORY IN DATABASE
-    Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
-    //5) DELETE CATEGORY
-    Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
+    //1) Display All Brand
+    Route::get('/view', [BrandController::class, 'BrandView'])->name('view.category');
+    //2 ) ADD NEW BRAND
+    Route::post('/store', [BrandController::class, 'BrandStore'])->name('category.store');
+    //3) SHOW EDIT BRAND PAGE
+    Route::get('/edit/{id}', [BrandController::class, 'BrandEdit'])->name('category.edit');
+    //4) UPDATE BRAND IN DATABASE
+    Route::post('/update', [BrandController::class, 'BrandUpdate'])->name('category.update');
+    //5) DELETE BRAND
+    Route::get('/delete/{id}', [BrandController::class, 'BrandDelete'])->name('category.delete');
 
 });

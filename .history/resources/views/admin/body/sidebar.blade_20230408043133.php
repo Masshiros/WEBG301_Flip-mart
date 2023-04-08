@@ -49,7 +49,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ ($route == 'all.category')? 'active' : '' }}"><a href="{{route('all.category')}}"><i class="ti-more"></i>All Category</a></li>
+                    <li class="{{ ($route == 'view.category')? 'active' : '' }}"><a href="{{ ($route == 'view.category')"><i class="ti-more"></i>All Category</a></li>
                    
                 </ul>
             </li>
