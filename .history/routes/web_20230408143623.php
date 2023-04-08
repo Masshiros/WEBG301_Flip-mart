@@ -4,7 +4,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -106,18 +105,17 @@ Route::prefix('category')->group(function () {
     Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
     //5) DELETE CATEGORY
     Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
-    
     // ADMIN SUBCATEGORY ALL ROUTES
     //1) Display All CATEGORY
-    Route::get('/sub/view', [SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
+    Route::get('/view', [SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
     //2 ) ADD NEW CATEGORY
-    Route::post('/sub/store', [SubCategoryController::class, 'SubCategoryStore'])->name('subcategory.store');
+    Route::post('/store', [SubCategoryController::class, 'SubCategoryStore'])->name('subcategory.store');
     //3) SHOW EDIT CATEGORY PAGE
-    Route::get('/sub/edit/{id}', [SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
+    Route::get('/edit/{id}', [SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
     //4) UPDATE CATEGORY IN DATABASE
-    Route::post('/sub/update', [SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
+    Route::post('/update', [SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
     //5) DELETE CATEGORY
-    Route::get('/sub/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
+    Route::get('/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
 
 });
 
