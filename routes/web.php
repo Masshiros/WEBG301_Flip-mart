@@ -6,10 +6,12 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,18 @@ Route::get('/user/change/password', [IndexController::class, 'UserChangePassword
 // 6)
 Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
+// ADMIN USER ALL ROUTES
+Route::prefix('user')->group(function () {
+    //1) Display All USER
+    Route::get('/view', [UserController::class, 'UserView'])->name('all.user');
+    //2) SHOW EDIT USER PAGE
+    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('user.edit');
+    //3) UPDATE USER IN DATABASE
+    Route::post('/update', [UserController::class, 'UserUpdate'])->name('user.update');
+    //4) DELETE USER
+    Route::get('/delete/{id}', [UserController::class, 'UserDelete'])->name('user.delete');
+
+});
 // ADMIN BRAND ALL ROUTES
 Route::prefix('brand')->group(function () {
     //1) Display All Brand
@@ -107,7 +121,7 @@ Route::prefix('category')->group(function () {
     Route::post('/update', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
     //5) DELETE CATEGORY
     Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
-    
+
     // ADMIN SUBCATEGORY ALL ROUTES
     //1) Display All CATEGORY
     Route::get('/sub/view', [SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
@@ -119,11 +133,11 @@ Route::prefix('category')->group(function () {
     Route::post('/sub/update', [SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
     //5) DELETE CATEGORY
     Route::get('/sub/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
-    
+
     // ADMIN SUB->SUBCATEGORY ALL ROUTES
     //1) Display All CATEGORY
     Route::get('/sub/sub/view', [SubCategoryController::class, 'SubSubCategoryView'])->name('all.subsubcategory');
-    
+
     //2) GET SUBCATEGORY WITH AJAX
     Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
     //3) GET SUBSUBCATEGORY WITH AJAX
@@ -143,8 +157,7 @@ Route::prefix('category')->group(function () {
 Route::prefix('product')->group(function () {
     //1) Display All Brand
     Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
- 
+
 
 });
 
-    
