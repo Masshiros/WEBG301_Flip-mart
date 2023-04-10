@@ -1,6 +1,6 @@
 @php
     $prefix = Request::route()->getPrefix();
-    $route = Route::current()->getName();  
+    $route = Route::current()->getName();
 @endphp
 <aside class="main-sidebar">
     <!-- sidebar-->
@@ -26,6 +26,19 @@
                     <i data-feather="pie-chart"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
+
+            <li class="treeview {{($prefix == '/user') ? 'active' : ''}}">
+                <a href="#">
+                    <i data-feather="message-circle"></i>
+                    <span>User</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ ($route == 'all.user')? 'active' : '' }}"><a href="{{route('all.user')}}"><i class="ti-more"></i>All User</a></li>
+                </ul>
             </li>
 
             <li class="treeview {{($prefix == '/brand') ? 'active' : ''}}">
@@ -66,7 +79,7 @@
                 <ul class="treeview-menu">
                     <li class="{{ ($route == 'add-product')? 'active' : '' }}"><a href="{{route('add-product')}}"><i class="ti-more"></i>Add Product</a></li>
                     <li class="{{ ($route == 'all.product')? 'active' : '' }}"><a href="invoice.html"><i class="ti-more"></i>Manage Product</a></li>
-                  
+
                 </ul>
             </li>
 
