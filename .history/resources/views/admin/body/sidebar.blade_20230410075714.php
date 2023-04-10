@@ -8,10 +8,10 @@
 
         <div class="user-profile">
             <div class="ulogo">
-                <a href="{{url('admin/dashboard')}}">
+                <a href="{{url('admin/dashboard')}}>
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <h3><img src="{{asset('backend/images/logo-dark.png')}}" alt="">
+                        <h3 "><img src="{{asset('backend/images/logo-dark.png')}}" alt="">
                         <b>Flip</b> Mart</h3>
                     </div>
                 </a>
