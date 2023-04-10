@@ -45,7 +45,7 @@
                                                 <h5>user Phone <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <input value="{{$user->phone}}" type="text"  name="phone"
-                                                        class="form-control"  ">
+                                                        class="form-control">
                                                         @error('phone')
                                                             <span class="text-danger">{{$message}}</span>
                                                          @enderror

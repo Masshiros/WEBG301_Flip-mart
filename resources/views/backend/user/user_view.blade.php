@@ -33,7 +33,7 @@
                         @foreach($user as $item)
                         <tr>
                             <td>
-                                <img src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : url('upload/no_image.jpg') }}"
+                                <img src="{{ (!empty($item->profile_photo_path)) ? url('upload/user_images/'.$item->profile_photo_path) : url('upload/no_image.jpg') }}"
                                  style="border-radius: 50%" class="card-img-top" height="100px" width="70px">
 
                              </td>
