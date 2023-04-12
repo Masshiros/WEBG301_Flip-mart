@@ -10,9 +10,9 @@
 - Need notification when change password successfully 
 
 ### 3. Sub-SubCategory
-- Edit page: can not display the old subcategory 
+- Edit page: can not display the old subcategory  (done)
 ### 4. Product
-- Add page : add validation
+- Add page : add validation (done)
 ## FRONTEND PAGE
 ### 1. Login
 - Need validation in login form (FIXED)
@@ -22,5 +22,5 @@
 - Need validation 
 
 ### 3. Reset password
-- Need validation
+- Need validation 
 
