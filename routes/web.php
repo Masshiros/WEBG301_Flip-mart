@@ -109,6 +109,21 @@ Route::prefix('brand')->group(function () {
 
 });
 
+// ADMIN SLIDER ALL ROUTES
+    Route::prefix('Slider')->group(function () {
+    //1) Display All Brand
+    Route::get('/view', [SliderController::class, 'SliderView'])->name('all.slider');
+    //2 ) ADD NEW SLIDER
+    Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+    //3) SHOW EDIT SLIDER PAGE
+    Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
+    //4) UPDATE SLIDER IN DATABASE
+    Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
+    //5) DELETE SLIDER
+    Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+
+});
+
 // ADMIN CATEGORY ALL ROUTES
 Route::prefix('category')->group(function () {
     //1) Display All CATEGORY
@@ -157,10 +172,10 @@ Route::prefix('category')->group(function () {
 Route::prefix('product')->group(function () {
     //1) Display Product Add Page
     Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
-    
+
     //2 Store New Product
     Route::post('/store', [ProductController::class, 'StoreProduct'])->name('product-store');
-    
+
     //3 Manage Product
     Route::get('/manage',[ProductController::class, 'ManageProduct'])->name('manage-product');
     //4) Display Product Edit Page

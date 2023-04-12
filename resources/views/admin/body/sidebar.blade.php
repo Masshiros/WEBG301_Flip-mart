@@ -54,6 +54,8 @@
                 </ul>
             </li>
 
+           {{-- Slider --}}
+
             <li class="treeview {{($prefix == '/category') ? 'active' : ''}}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Category</span>
