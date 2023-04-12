@@ -10,8 +10,8 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
