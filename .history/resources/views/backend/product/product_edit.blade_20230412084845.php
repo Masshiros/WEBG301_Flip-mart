@@ -375,9 +375,7 @@
                                     <h5>Long Description Chinese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="long_description_cn" id="editor3" rows="10" cols="80" class="form-control"  placeholder="Textarea text" > {!! $product->long_description_cn!!}<</textarea>
-                                        @error('long_description_cn')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                    
                                     </div>
                                 </div>
                             </div>

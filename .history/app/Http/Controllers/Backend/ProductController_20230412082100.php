@@ -24,77 +24,60 @@ class ProductController extends Controller
     public function StoreProduct(Request $request)
     {
         $request->validate([
-            'brand_id' => 'required',
-            'category_id' => 'required',
-            'subcategory_id' => 'required',
-            'subsubcategory_id' => 'required',
-            'product_name_en' =>'required',
-            'product_name_cn' =>'required',
-            'product_name_vn' => 'required',
-            'product_slug_en' => 'required',
-            'product_slug_vn' => 'required',
-            'product_slug_cn' => 'required',
+            'brand_id' => 'require',
+            'subsubcategory_id' => 'require',
+            'product_name_en' => $request->product_name_en,
+            'product_name_cn' => $request->product_name_cn,
+            'product_name_vn' => $request->product_name_vn,
+            'product_slug_en' => strtolower(str_replace(' ', '-', $request->product_name_en)),
+            'product_slug_vn' => strtolower(str_replace(' ', '-', $request->product_name_vn)),
+            'product_slug_cn' => strtolower(str_replace(' ', '-', $request->product_name_cn)),
 
-            'product_code' =>'required',
-            'product_quantity' => 'required',
-            'selling_price' => 'required',
+            'product_code' => $request->product_code,
+            'product_quantity' => $request->product_quantity,
+            'discount_price' => $request->discount_price,
+            'selling_price' => $request->selling_price,
 
-            'product_tags_en' => 'required',
-            'product_tags_vn' => 'required',
-            'product_tags_cn' => 'required',
+            'product_tags_en' => $request->product_tags_en,
+            'product_tags_vn' => $request->product_tags_vn,
+            'product_tags_cn' => $request->product_tags_cn,
 
+            'product_size_en' => $request->product_size_en,
+            'product_size_vn' => $request->product_size_vn,
+            'product_size_cn' => $request->product_size_cn,
+            'product_size_vn' => $request->product_size_vn,
 
-            'product_color_en' => 'required',
-            'product_color_vn' => 'required',
-            'product_color_cn' => 'required',
+            'product_color_en' => $request->product_color_en,
+            'product_color_vn' => $request->product_color_vn,
+            'product_color_cn' => $request->product_color_cn,
 
-            'short_description_en' => 'required',
-            'short_description_vn' => 'required',
-            'short_description_cn' => 'required',
-            'long_description_en' => 'required',
-            'long_description_vn' => 'required',
-            'long_description_cn' => 'required',
+            'short_description_en' => $request->short_description_en,
+            'short_description_vn' => $request->short_description_vn,
+            'short_description_cn' => $request->short_description_cn,
+            'long_description_en' => $request->long_description_en,
+            'long_description_vn' => $request->long_description_vn,
+            'long_description_cn' => $request->long_description_cn,
 
+            'hot_deals' => $request->hot_deals,
+            'featured' => $request->featured,
+            'special_offer' => $request->special_offer,
+            'special_deals' => $request->special_deals,
 
-            'product_thumbnail' => 'required',
-            'multi_img' => 'required',
-            'status' => 'required',
-            
+            'product_thumbnail' => $save_url,
+            'status' => 1,
+            'created_at' => Carbon::now(),
         ], [
-            'brand_id.required' => 'Please select brand',
-            'brand_id.required' => 'Please select category',
-            'brand_id.required' => 'Please select subcategory',
-            'subsubcategory_id.required' => 'Please select subsubcategory',
-            'product_name_en.required' =>'Please input english name of product',
-            'product_name_cn.required' =>'Please input chinese name of product',
-            'product_name_vn.required' => 'Please input vietnamese name of product',
-            'product_slug_en.required' => 'Please input english slug of product',
-            'product_slug_vn.required' => 'Please input chinese slug of product',
-            'product_slug_cn.required' => 'Please input vietnamese  slug of product',
-
-            'product_code.required' =>'Please input product code',
-            'product_quantity.required' => 'Please input quantity of product',
-            'selling_price.required' => 'Please input selling price of product',
-
-            'product_tags_en.required' => 'Please add some english tags',
-            'product_tags_vn.required' => 'Please add some vietnamese tags',
-            'product_tags_cn.required' => 'Please add some chinese tags',
-
-
-            'product_color_en.required' => 'Please add some color in english',
-            'product_color_vn.required' => 'Please add some color in vietnamese',
-            'product_color_cn.required' => 'Please add some color in chinese',
-
-            'short_description_en.required' => 'Please add some short description in english',
-            'short_description_vn.required' => 'Please add some short description in vietnamese',
-            'short_description_cn.required' => 'Please add some short description in chinese',
-            'long_description_en.required' => 'Please add some long description in english',
-            'long_description_vn.required' => 'Please add some long description in vietnamese',
-            'long_description_cn.required' => 'Please add some long description in chinese',
-
-
-            'product_thumbnail.required' => 'Please add product thumbnail',
-            'multi_img.required' => 'Please add some product images',
+            'brand_id.required' => 'Please Input Brand English Name',
+            'subsubcategory_id.required' => 'Please Input Brand Vietnamese Name',
+            'product_name_en.required' => 'Please Input Brand Chinese Name',
+            'product_name_vn.required' => 'Please Input Brand Image',
+            'product_name_cn.required' => 'Please Input Brand Image',
+            'product_slug_en.required' => 'Please Input Brand Image',
+            'product_name_vn.required' => 'Please Input Brand Image',
+            'product_name_vn.required' => 'Please Input Brand Image',
+            'product_name_vn.required' => 'Please Input Brand Image',
+            'product_name_vn.required' => 'Please Input Brand Image',
+            'product_name_vn.required' => 'Please Input Brand Image',
         ]);
         $image = $request->file('product_thumbnail');
         $name_generate = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
@@ -122,6 +105,7 @@ class ProductController extends Controller
             'product_size_en' => $request->product_size_en,
             'product_size_vn' => $request->product_size_vn,
             'product_size_cn' => $request->product_size_cn,
+            'product_size_vn' => $request->product_size_vn,
 
             'product_color_en' => $request->product_color_en,
             'product_color_vn' => $request->product_color_vn,
@@ -180,76 +164,6 @@ class ProductController extends Controller
     }
     public function ProductDataUpdate(Request $request)
     {
-        $request->validate([
-            'brand_id' => 'required',
-            'category_id' => 'required',
-            'subcategory_id' => 'required',
-            'subsubcategory_id' => 'required',
-            'product_name_en' =>'required',
-            'product_name_cn' =>'required',
-            'product_name_vn' => 'required',
-            'product_slug_en' => 'required',
-            'product_slug_vn' => 'required',
-            'product_slug_cn' => 'required',
-
-            'product_code' =>'required',
-            'product_quantity' => 'required',
-            'selling_price' => 'required',
-
-            'product_tags_en' => 'required',
-            'product_tags_vn' => 'required',
-            'product_tags_cn' => 'required',
-
-
-            'product_color_en' => 'required',
-            'product_color_vn' => 'required',
-            'product_color_cn' => 'required',
-
-            'short_description_en' => 'required',
-            'short_description_vn' => 'required',
-            'short_description_cn' => 'required',
-            'long_description_en' => 'required',
-            'long_description_vn' => 'required',
-            'long_description_cn' => 'required',
-
-
-            'status' => 'required',
-            
-        ], [
-            'brand_id.required' => 'Please select brand',
-            'brand_id.required' => 'Please select category',
-            'brand_id.required' => 'Please select subcategory',
-            'subsubcategory_id.required' => 'Please select subsubcategory',
-            'product_name_en.required' =>'Please input english name of product',
-            'product_name_cn.required' =>'Please input chinese name of product',
-            'product_name_vn.required' => 'Please input vietnamese name of product',
-            'product_slug_en.required' => 'Please input english slug of product',
-            'product_slug_vn.required' => 'Please input chinese slug of product',
-            'product_slug_cn.required' => 'Please input vietnamese  slug of product',
-
-            'product_code.required' =>'Please input product code',
-            'product_quantity.required' => 'Please input quantity of product',
-            'selling_price.required' => 'Please input selling price of product',
-
-            'product_tags_en.required' => 'Please add some english tags',
-            'product_tags_vn.required' => 'Please add some vietnamese tags',
-            'product_tags_cn.required' => 'Please add some chinese tags',
-
-
-            'product_color_en.required' => 'Please add some color in english',
-            'product_color_vn.required' => 'Please add some color in vietnamese',
-            'product_color_cn.required' => 'Please add some color in chinese',
-
-            'short_description_en.required' => 'Please add some short description in english',
-            'short_description_vn.required' => 'Please add some short description in vietnamese',
-            'short_description_cn.required' => 'Please add some short description in chinese',
-            'long_description_en.required' => 'Please add some long description in english',
-            'long_description_vn.required' => 'Please add some long description in vietnamese',
-            'long_description_cn.required' => 'Please add some long description in chinese',
-
-
-            
-        ]);
         $product_id = $request->id;
         Product::findOrFail($product_id)->update([
             'brand_id' => $request->brand_id,
@@ -273,6 +187,7 @@ class ProductController extends Controller
             'product_size_en' => $request->product_size_en,
             'product_size_vn' => $request->product_size_vn,
             'product_size_cn' => $request->product_size_cn,
+            'product_size_vn' => $request->product_size_vn,
 
             'product_color_en' => $request->product_color_en,
             'product_color_vn' => $request->product_color_vn,

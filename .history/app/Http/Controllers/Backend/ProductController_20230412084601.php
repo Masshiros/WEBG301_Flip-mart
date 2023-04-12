@@ -213,6 +213,8 @@ class ProductController extends Controller
             'long_description_cn' => 'required',
 
 
+            'product_thumbnail' => 'required',
+            'multi_img' => 'required',
             'status' => 'required',
             
         ], [
@@ -248,7 +250,8 @@ class ProductController extends Controller
             'long_description_cn.required' => 'Please add some long description in chinese',
 
 
-            
+            'product_thumbnail.required' => 'Please add product thumbnail',
+            'multi_img.required' => 'Please add some product images',
         ]);
         $product_id = $request->id;
         Product::findOrFail($product_id)->update([

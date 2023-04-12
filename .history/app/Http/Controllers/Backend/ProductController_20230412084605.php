@@ -213,6 +213,8 @@ class ProductController extends Controller
             'long_description_cn' => 'required',
 
 
+            'product_thumbnail' => 'required',
+            'multi_img' => 'required',
             'status' => 'required',
             
         ], [

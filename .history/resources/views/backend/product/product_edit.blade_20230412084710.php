@@ -318,9 +318,7 @@
                                     <h5>Short Description English <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="short_description_en" id="textarea" class="form-control"  placeholder="Textarea text" ">{!! $product->short_description_en!!}</textarea>
-                                        @error('short_description_en')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -329,9 +327,7 @@
                                     <h5>Short Description Vietnamese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="short_description_vn" id="textarea" class="form-control"  placeholder="Textarea text" >{!! $product->short_description_vn!!}</textarea>
-                                         @error('short_description_vn')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -340,9 +336,7 @@
                                     <h5>Short Description Chinese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="short_description_cn" id="textarea" class="form-control"  placeholder="Textarea text" >{!! $product->short_description_cn!!}</textarea>
-                                        @error('short_description_cn')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -352,10 +346,8 @@
                                 <div class="form-group">
                                     <h5>Long Description English <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <textarea name="long_description_en" id="editor1" rows="10" cols="80" class="form-control"  placeholder="Textarea text" >{!! $product->long_description_en!!}</textarea>
-                                        @error('long_description_en')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                        <textarea name="long_description_en" id="editor1" rows="10" cols="80" class="form-control" required placeholder="Textarea text" >{!! $product->long_description_en!!}</textarea>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -363,10 +355,8 @@
                                 <div class="form-group">
                                     <h5>Long Description Vietnamese <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <textarea name="long_description_vn" id="editor2" rows="10" cols="80"  class="form-control"  placeholder="Textarea text"> {!! $product->long_description_vn!!}<</textarea>
-                                        @error('long_description_vn')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                        <textarea name="long_description_vn" id="editor2" rows="10" cols="80"  class="form-control" required placeholder="Textarea text"> {!! $product->long_description_vn!!}<</textarea>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -374,10 +364,8 @@
                                 <div class="form-group">
                                     <h5>Long Description Chinese <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <textarea name="long_description_cn" id="editor3" rows="10" cols="80" class="form-control"  placeholder="Textarea text" > {!! $product->long_description_cn!!}<</textarea>
-                                        @error('long_description_cn')
-                                                <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                        <textarea name="long_description_cn" id="editor3" rows="10" cols="80" class="form-control" required placeholder="Textarea text" > {!! $product->long_description_cn!!}<</textarea>
+                                    
                                     </div>
                                 </div>
                             </div>
