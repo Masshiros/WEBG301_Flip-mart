@@ -82,10 +82,10 @@ class BrandController extends Controller
                 'brand_slug_en' => strtolower(str_replace(' ', '-', $request->brand_name_en)),
                 'brand_slug_vn' => strtolower(str_replace(' ', '-', $request->brand_name_vn)),
                 'brand_slug_cn' => strtolower(str_replace(' ', '-', $request->brand_name_cn)),
-                
+
             ]);
             $notification = array(
-                'message' => 'Brand Updated Successfully',
+                'message' => 'Br                and Updated Successfully',
                 'alert-type' => 'info',
             );
             return redirect()->route('all.brand')->with($notification);
