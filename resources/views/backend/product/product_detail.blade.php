@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 <div class="container-full">
-    
+
 
     <!-- Main content -->
     <section class="content">
@@ -10,14 +10,14 @@
       <div class="box">
         <div class="box-header with-border">
           <h4 class="box-title"> Product Detail</h4>
-         
+
         </div>
         <!-- /.box-header -->
         <div class="box-body">
           <div class="row">
             <div class="col">
                 <div class="row">
-                    <div class="col-12">	
+                    <div class="col-12">
                         <div class="row"> <!--Start 1st row-->
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -42,8 +42,8 @@
                                         <select name="category_id" class="form-control">
                                             <option value="" selected="" disabled="">Select Category </option>
                                             @foreach($categories as $category)
-                                            <option value="{{$category->id}}" 
-                                                {{$category->id == $product->subsubcategory->subcategory->category['id'] ? 
+                                            <option value="{{$category->id}}"
+                                                {{$category->id == $product->subsubcategory->subcategory->category['id'] ?
                                                 'selected' : '' }}>
                                                 {{$category->category_name_en}}
                                             </option>
@@ -62,8 +62,8 @@
                                         <select name="subcategory_id" class="form-control">
                                             <option value="" selected="" disabled="">Select SubCategory </option>
                                             @foreach($subcategories as $subcategory)
-                                            <option value="{{$category->id}}" 
-                                                {{$subcategory->id == $product->subsubcategory->subcategory['id'] ? 
+                                            <option value="{{$category->id}}"
+                                                {{$subcategory->id == $product->subsubcategory->subcategory['id'] ?
                                                 'selected' : '' }}>
                                                 {{$subcategory->subcategory_name_en}}
                                             </option>
@@ -82,8 +82,8 @@
                                         <select name="subsubcategory_id" class="form-control">
                                             <option value="" selected="" disabled="">Select SubSubCategory </option>
                                             @foreach($subsubcategories as $subsubcategory)
-                                            <option value="{{$category->id}}" 
-                                                {{$subsubcategory->id == $product->subsubcategory['id'] ? 
+                                            <option value="{{$category->id}}"
+                                                {{$subsubcategory->id == $product->subsubcategory['id'] ?
                                                 'selected' : '' }}>
                                                 {{$subsubcategory->subsubcategory_name_en}}
                                             </option>
@@ -95,8 +95,8 @@
                                     </div>
                                 </div>
                             </div> <!--Start col-3-->
-                           
-                        </div>	<!--End 1st row-->	
+
+                        </div>	<!--End 1st row-->
 
                         <div class="row"> <!--Start 2nd row-->
                             <div class="col-md-4">
@@ -136,7 +136,7 @@
                                     </div>
                                 </div>
                             </div> <!--Start col-4-->
-                           
+
                         </div>	<!--End 2nd row-->
                         <div class="row"> <!--Start 3rd row-->
                             <div class="col-md-3">
@@ -171,7 +171,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                            </div> <!--Start col-3-->                           
+                            </div> <!--Start col-3-->
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Selling Price <span class="text-danger">*</span></h5>
@@ -182,13 +182,13 @@
                                     @enderror
                                     </div>
                                 </div>
-                            </div> <!--Start col-3-->                           
-                        </div>	<!--End 3rd row-->	
+                            </div> <!--Start col-3-->
+                        </div>	<!--End 3rd row-->
 
                         <div class="row"> <!--Start 4th row-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    
+
                                         <h5>Product Tags En <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_tags_en" class="form-control" value="{{$product->product_tags_en}}" data-role="tagsinput" >
@@ -196,11 +196,11 @@
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--Start col-4-->                           
+                            </div> <!--Start col-4-->
                             <div class="col-md-4">
-                                
+
                                     <div class="form-group">
                                         <h5>Product Tags Vn <span class="text-danger">*</span></h5>
                                         <div class="controls">
@@ -210,7 +210,7 @@
                                         @enderror
                                         </div>
                                     </div>
-                                
+
                             </div> <!--Start col-3-->
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -222,13 +222,13 @@
                                     @enderror
                                     </div>
                                 </div>
-                            </div> <!--Start col-4-->      
-                           
-                        </div>	<!--End 4th row-->				
+                            </div> <!--Start col-4-->
+
+                        </div>	<!--End 4th row-->
                        	<div class="row"> <!-- Start 5th row-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                   
+
                                         <h5>Product Size En <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_size_en" class="form-control" value="{{$product->product_size_en}}" data-role="tagsinput" >
@@ -236,12 +236,12 @@
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--End col-4-->    
+                            </div> <!--End col-4-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                   
+
                                         <h5>Product Size Chinese <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_size_cn" class="form-control" value="{{$product->product_tags_cn}}" data-role="tagsinput" >
@@ -249,12 +249,12 @@
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--End col-4-->    
+                            </div> <!--End col-4-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                   
+
                                         <h5>Product Size Vn <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_size_vn" class="form-control" value="{{$product->product_tags_vn}}" data-role="tagsinput" >
@@ -262,14 +262,14 @@
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--End col-4-->    
+                            </div> <!--End col-4-->
                         </div>	<!-- End 5th row-->
                        	<div class="row"> <!-- Start 6th row-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                   
+
                                         <h5>Product Color En <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_color_en" class="form-control" value="{{$product->product_color_en}}" data-role="tagsinput" >
@@ -277,12 +277,12 @@
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--End col-4-->    
+                            </div> <!--End col-4-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                   
+
                                         <h5>Product Color Chinese <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_color_cn" class="form-control" value="{{$product->product_color_cn}}" data-role="tagsinput" >
@@ -290,12 +290,12 @@
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--End col-4-->    
+                            </div> <!--End col-4-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                   
+
                                         <h5>Product Color Vn <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="product_color_vn" class="form-control" value="{{$product->product_color_vn}}" data-role="tagsinput" >
@@ -303,19 +303,19 @@
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         </div>
-                                    
+
                                 </div>
-                            </div> <!--End col-4-->    
+                            </div> <!--End col-4-->
                         </div>	<!-- End 5th row-->
-                       
-                       
+
+
                         <div class="row"> <!--Start 7th row -->
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Short Description English <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="short_description_en" id="textarea" class="form-control" required placeholder="Textarea text" ">{!! $product->short_description_en!!}</textarea>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -324,7 +324,7 @@
                                     <h5>Short Description Vietnamese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="short_description_vn" id="textarea" class="form-control" required placeholder="Textarea text" >{!! $product->short_description_vn!!}</textarea>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -333,7 +333,7 @@
                                     <h5>Short Description Chinese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="short_description_cn" id="textarea" class="form-control" required placeholder="Textarea text" >{!! $product->short_description_cn!!}</textarea>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -344,7 +344,7 @@
                                     <h5>Long Description English <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="long_description_en" id="editor1" rows="10" cols="80" class="form-control" required placeholder="Textarea text" >{!! $product->long_description_en!!}</textarea>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -353,7 +353,7 @@
                                     <h5>Long Description Vietnamese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="long_description_vn" id="editor2" rows="10" cols="80"  class="form-control" required placeholder="Textarea text"> {!! $product->long_description_vn!!}<</textarea>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -362,22 +362,22 @@
                                     <h5>Long Description Chinese <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea name="long_description_cn" id="editor3" rows="10" cols="80" class="form-control" required placeholder="Textarea text" > {!! $product->long_description_cn!!}<</textarea>
-                                    
+
                                     </div>
                                 </div>
                             </div>
                         </div> <!-- End 8th row-->
                         <hr>
-                       
-                       
-                      
-                      
-                    
-                 
+
+
+
+
+
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                
+
                                 <div class="controls">
                                     <fieldset>
                                         <input type="checkbox" id="checkbox_2" name="hot_deals"  value="1" {{$product->hot_deals == 1 ? 'checked' : ''}}>
@@ -392,7 +392,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                               
+
                                 <div class="controls">
                                     <fieldset>
                                         <input type="checkbox" id="checkbox_4" name="special_offer"  value="1"  {{$product->special_offer == 1 ? 'checked' : ''}}>
@@ -406,7 +406,7 @@
                             </div>
                         </div>
                     </div>
-               
+
 
             </div>
             <!-- /.col -->
@@ -427,9 +427,9 @@
 				  <div class="box-header">
 					<h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
 				  </div>
-               
+
                     <div class="row row-sm">
-                        @foreach($multiImgs as $img) 
+                        @foreach($multiImgs as $img)
                         <div class="col-md-3">
                             <div class="card" ">
                                 <img class="card-img-top" src="{{asset($img->photo_name)}}" style="height: 130px; width: 280px; object-fit:cover">
@@ -437,11 +437,11 @@
                         </div> <!-- end col md 3 -->
                         @endforeach
                     </div>
-                   
+
                     <br>
                     <br>
-                
-				
+
+
 				</div>
 			  </div>
         </div> <!--End row-->
@@ -456,22 +456,22 @@
 				  <div class="box-header">
 					<h4 class="box-title">Product Thumbnail Image <strong>Update</strong></h4>
 				  </div>
-               
+
                     <input type="hidden" name="id" value="{{$product->id}}">
                     <input type="hidden" name="oldimage" value="{{$product->product_thumbnail}}">
                     <div class="row row-sm">
-                        
+
                         <div class="col-md-3">
                             <div class="card" ">
                                 <img class="card-img-top" src="{{asset($product->product_thumbnail)}}" style="height: 130px; width: 280px; object-fit:cover">
                               </div>
                         </div> <!-- end col md 3 -->
-                       
+
                     </div>
                     <br>
                     <br>
-                
-				
+
+
 				</div>
 			  </div>
         </div> <!--End row-->

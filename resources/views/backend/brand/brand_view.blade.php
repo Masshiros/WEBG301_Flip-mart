@@ -2,13 +2,13 @@
 @section('admin')
 <div class="container-full">
     <!-- Content Header (Page header) -->
-  
+
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-          
-       
+
+
         <div class="col-8">
 
          <div class="box">
@@ -26,7 +26,7 @@
                             <th>Brand Chinese</th>
                             <th>Image</th>
                             <th>Action</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody>
@@ -42,16 +42,16 @@
                                 <a href="{{route('brand.edit', $item->id)}}" class="btn btn-info" title="Edit Data"> <i class="fa fa-pencil"></i></a>
                                 <a href="{{route('brand.delete',$item->id)}}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
                             </td>
-                            
+
                         </tr>
                         @endforeach
-                       
+
                   </table>
                 </div>
             </div>
             <!-- /.box-body -->
           </div>
-              
+
         </div>
         <!-- /.col -->
         <!---------------ADD BRAND PAGE------------>
@@ -99,7 +99,7 @@
                                         <div class=" form-group">
                                                     <h5>Brand Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file" 
+                                                        <input type="file"
                                                             name="brand_image" class="form-control"
                                                             >
                                                         @error('brand_image')
@@ -116,14 +116,14 @@
                </div>
                <!-- /.box-body -->
              </div>
-                 
+
            </div>
            <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  
+
   </div>
 
 @endsection
