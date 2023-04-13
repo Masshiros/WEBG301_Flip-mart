@@ -31,9 +31,6 @@ class ProductController extends Controller
             'product_name_en' =>'required',
             'product_name_cn' =>'required',
             'product_name_vn' => 'required',
-            'product_slug_en' => 'required',
-            'product_slug_vn' => 'required',
-            'product_slug_cn' => 'required',
 
             'product_code' =>'required',
             'product_quantity' => 'required',
@@ -58,19 +55,16 @@ class ProductController extends Controller
 
             'product_thumbnail' => 'required',
             'multi_img' => 'required',
-            'status' => 'required',
+
             
         ], [
             'brand_id.required' => 'Please select brand',
-            'brand_id.required' => 'Please select category',
-            'brand_id.required' => 'Please select subcategory',
+            'category_id.required' => 'Please select category',
+            'subcategory_id.required' => 'Please select subcategory',
             'subsubcategory_id.required' => 'Please select subsubcategory',
             'product_name_en.required' =>'Please input english name of product',
             'product_name_cn.required' =>'Please input chinese name of product',
             'product_name_vn.required' => 'Please input vietnamese name of product',
-            'product_slug_en.required' => 'Please input english slug of product',
-            'product_slug_vn.required' => 'Please input chinese slug of product',
-            'product_slug_cn.required' => 'Please input vietnamese  slug of product',
 
             'product_code.required' =>'Please input product code',
             'product_quantity.required' => 'Please input quantity of product',
@@ -180,6 +174,8 @@ class ProductController extends Controller
     }
     public function ProductDataUpdate(Request $request)
     {
+       
+       
         $request->validate([
             'brand_id' => 'required',
             'category_id' => 'required',
@@ -188,9 +184,6 @@ class ProductController extends Controller
             'product_name_en' =>'required',
             'product_name_cn' =>'required',
             'product_name_vn' => 'required',
-            'product_slug_en' => 'required',
-            'product_slug_vn' => 'required',
-            'product_slug_cn' => 'required',
 
             'product_code' =>'required',
             'product_quantity' => 'required',
@@ -212,20 +205,16 @@ class ProductController extends Controller
             'long_description_vn' => 'required',
             'long_description_cn' => 'required',
 
-
-            'status' => 'required',
             
         ], [
             'brand_id.required' => 'Please select brand',
-            'brand_id.required' => 'Please select category',
-            'brand_id.required' => 'Please select subcategory',
+            'category_id.required' => 'Please select category',
+            'subcategory_id.required' => 'Please select subcategory',
             'subsubcategory_id.required' => 'Please select subsubcategory',
             'product_name_en.required' =>'Please input english name of product',
             'product_name_cn.required' =>'Please input chinese name of product',
             'product_name_vn.required' => 'Please input vietnamese name of product',
-            'product_slug_en.required' => 'Please input english slug of product',
-            'product_slug_vn.required' => 'Please input chinese slug of product',
-            'product_slug_cn.required' => 'Please input vietnamese  slug of product',
+
 
             'product_code.required' =>'Please input product code',
             'product_quantity.required' => 'Please input quantity of product',
