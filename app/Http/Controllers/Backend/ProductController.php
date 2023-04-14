@@ -56,7 +56,7 @@ class ProductController extends Controller
             'product_thumbnail' => 'required',
             'multi_img' => 'required',
 
-            
+
         ], [
             'brand_id.required' => 'Please select brand',
             'category_id.required' => 'Please select category',
@@ -174,8 +174,7 @@ class ProductController extends Controller
     }
     public function ProductDataUpdate(Request $request)
     {
-       
-       
+
         $request->validate([
             'brand_id' => 'required',
             'category_id' => 'required',
@@ -205,7 +204,7 @@ class ProductController extends Controller
             'long_description_vn' => 'required',
             'long_description_cn' => 'required',
 
-            
+
         ], [
             'brand_id.required' => 'Please select brand',
             'category_id.required' => 'Please select category',
@@ -237,7 +236,7 @@ class ProductController extends Controller
             'long_description_cn.required' => 'Please add some long description in chinese',
 
 
-            
+
         ]);
         $product_id = $request->id;
         Product::findOrFail($product_id)->update([

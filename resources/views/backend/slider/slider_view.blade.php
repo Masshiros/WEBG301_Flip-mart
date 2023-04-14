@@ -30,9 +30,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($slider as $item)
+                        @foreach($sliders as $item)
                         <tr>
-                            <td>{{$item->slider_image}}</td>
+                            <td>
+                                <img src="{{asset($item->slider_image)}}" style="width: 70px; height: 40px">
+                            </td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->description}}</td>
                             <td>

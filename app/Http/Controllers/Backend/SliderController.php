@@ -13,8 +13,8 @@ class SliderController extends Controller
 {
         public function SliderView()
     {
-        $sliders = Slider::latest()->get();
-        return view('backend.slider.slider_view', compact('sliders'));
+        $sliders = Slider::latest()->get();// The latest syntax access and stored in variables ($ slider)
+        return view('backend.slider.slider_view', compact('sliders')); // return to see in the backend folder and Sliders transformation to compact function
     }
     public function SliderStore(Request $request)
     {
@@ -36,10 +36,9 @@ class SliderController extends Controller
             'title' => $request->title,
             'description' => $request->description,
 
-            // 'slider_slug_en' => strtolower(str_replace(' ', '-', $request->slider_name_en)),
-            // 'slider_slug_vn' => strtolower(str_replace(' ', '-', $request->slider_name_vn)),
-            // 'slider_slug_cn' => strtolower(str_replace(' ', '-', $request->slider_name_cn)),
-
+            // 'slider_image' => strtolower(str_replace(' ', '-', $request->slider_image)),
+            // 'title' => strtolower(str_replace(' ', '-', $request->title)),
+            // 'description' => strtolower(str_replace(' ', '-', $request->description)),
             'slider_image' => $save_url,
         ]);
         $notification = array(
@@ -67,48 +66,36 @@ class SliderController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
 
-                // 'slider_slug_en' => strtolower(str_replace(' ', '-', $request->slider_name_en)),
-                // 'slider_slug_vn' => strtolower(str_replace(' ', '-', $request->slider_name_vn)),
-                // 'slider_slug_cn' => strtolower(str_replace(' ', '-', $request->slider_name_cn)),
-
+                // 'slider_image' => strtolower(str_replace(' ', '-', $request->slider_image)),
+                // 'title' => strtolower(str_replace(' ', '-', $request->title)),
+                // 'description' => strtolower(str_replace(' ', '-', $request->description)),
                 'slider_image' => $save_url,
             ]);
             $notification = array(
                 'message' => 'Slider Updated Successfully',
                 'alert-type' => 'info',
             );
-            return redirect()->route('all.slider')->with($notification);
+            return redirect()->route('manage-slider')->with($notification);
         }else{
             Slider::findOrFail($slider_id)->update([
             'slider_image' => $request->slider_image,
             'title' => $request->title,
             'description' => $request->description,
 
-            // 'slider_slug_en' => strtolower(str_replace(' ', '-', $request->slider_name_en)),
-            // 'slider_slug_vn' => strtolower(str_replace(' ', '-', $request->slider_name_vn)),
-            // 'slider_slug_cn' => strtolower(str_replace(' ', '-', $request->slider_name_cn)),
+            // 'slider_image' => strtolower(str_replace(' ', '-', $request->slider_image)),
+            // 'title' => strtolower(str_replace(' ', '-', $request->title)),
+            // 'description' => strtolower(str_replace(' ', '-', $request->description)),
 
             ]);
             $notification = array(
                 'message' => 'Slider Updated Successfully',
                 'alert-type' => 'info',
             );
-            return redirect()->route('all.slider')->with($notification);
+            return redirect()->route('manage-slider')->with($notification);
         }
     }
-    public function SliderDelete($id){
-        $slider = Slider::findOrFail($id);
-        $img = $slider->slider_image;
-        unlink($img);
-        Slider::findOrFail($id)->delete();
-        $notification = array(
-            'message' => 'Slider Deleted Successfully',
-            'alert-type' => 'info',
-        );
-        return redirect()->back()->with($notification);
-    }
 
-    // inactivate product
+    // inactivate Slider
     public function SliderInactive($id)
     {
         Slider::findOrFail($id)->update([
@@ -120,7 +107,7 @@ class SliderController extends Controller
         );
         return redirect()->back()->with($notification);
     }
-    // activate product
+    // activate Slider
     public function SliderActive($id)
     {
         Slider::findOrFail($id)->update([
@@ -129,6 +116,18 @@ class SliderController extends Controller
         $notification = array(
             'message' => 'Slider Activated Successfully',
             'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+    // Delete Slider
+    public function SliderDelete($id){
+        $slider = Slider::findOrFail($id);
+        $img = $slider->slider_image;
+        unlink($img);
+        Slider::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Slider Deleted Successfully',
+            'alert-type' => 'info',
         );
         return redirect()->back()->with($notification);
     }
