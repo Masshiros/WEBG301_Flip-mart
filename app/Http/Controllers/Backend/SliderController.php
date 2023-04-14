@@ -11,36 +11,36 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class SliderController extends Controller
 {
-    public function SliderView(){
-        $slider = Slider::latest()->get();
-        return view('backend.slider.slider_view', compact('slider'));
+        public function SliderView()
+    {
+        $sliders = Slider::latest()->get();
+        return view('backend.slider.slider_view', compact('sliders'));
     }
-
-        public function SliderStore(Request $request)
+    public function SliderStore(Request $request)
     {
         $request->validate([
             'slider_image' => 'required',
             'title' => 'required',
-            'status' => 'required',
             'description' => 'required',
         ], [
-            'slider_image.required' => 'Please Input Slider English Name',
-            'title.required' => 'Please Input Slider Vietnamese Name',
-            'status.required' => 'Please Input Slider Chinese Name',
-            'description.required' => 'Please Input Slider Image',
+            'slider_image.required' => 'Please Input Slider Image',
+            'title.required' => 'Please Input Slider Title',
+            'description.required' => 'Please Input Slider Description',
         ]);
-        $image = $request->file('Slider_image');
+        $image = $request->file('slider_image');
         $name_generate = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(300, 300)->save('upload/Slider_images/' . $name_generate);
-        $save_url = 'upload/Slider_images/' . $name_generate;
+        Image::make($image)->resize(300, 300)->save('upload/slider_images/' . $name_generate);
+        $save_url = 'upload/slider_images/' . $name_generate;
         Slider::insert([
-            'Slider_name_en' => $request->Slider_name_en,
-            'Slider_name_vn' => $request->Slider_name_vn,
-            'Slider_name_cn' => $request->Slider_name_cn,
-            'Slider_slug_en' => strtolower(str_replace(' ', '-', $request->Slider_name_en)),
-            'Slider_slug_vn' => strtolower(str_replace(' ', '-', $request->Slider_name_vn)),
-            'Slider_slug_cn' => strtolower(str_replace(' ', '-', $request->Slider_name_cn)),
-            'Slider_image' => $save_url,
+            'slider_image' => $request->slider_image,
+            'title' => $request->title,
+            'description' => $request->description,
+
+            // 'slider_slug_en' => strtolower(str_replace(' ', '-', $request->slider_name_en)),
+            // 'slider_slug_vn' => strtolower(str_replace(' ', '-', $request->slider_name_vn)),
+            // 'slider_slug_cn' => strtolower(str_replace(' ', '-', $request->slider_name_cn)),
+
+            'slider_image' => $save_url,
         ]);
         $notification = array(
             'message' => 'Slider Inserted Successfully',
@@ -49,53 +49,56 @@ class SliderController extends Controller
         return redirect()->back()->with($notification);
     }
     public function SliderEdit($id){
-        $Slider = Slider::findOrFail($id);
-        return view('backend.Slider.Slider_edit', compact('Slider'));
+        $slider = Slider::findOrFail($id);
+        return view('backend.slider.slider_edit', compact('slider'));
     }
     public function SliderUpdate(Request $request ){
-        $Slider_id = $request->id;
+        $slider_id = $request->id;
         $old_img = $request->old_image;
         // if user choose any image
-        if($request->file('Slider_image')){
+        if($request->file('slider_image')){
             unlink($old_img);
-            $image = $request->file('Slider_image');
+            $image = $request->file('slider_image');
             $name_generate = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(300, 300)->save('upload/Slider_images/' . $name_generate);
-            $save_url = 'upload/Slider_images/' . $name_generate;
-            Slider::findOrFail($Slider_id)->update([
-                'Slider_name_en' => $request->Slider_name_en,
-                'Slider_name_vn' => $request->Slider_name_vn,
-                'Slider_name_cn' => $request->Slider_name_cn,
-                'Slider_slug_en' => strtolower(str_replace(' ', '-', $request->Slider_name_en)),
-                'Slider_slug_vn' => strtolower(str_replace(' ', '-', $request->Slider_name_vn)),
-                'Slider_slug_cn' => strtolower(str_replace(' ', '-', $request->Slider_name_cn)),
-                'Slider_image' => $save_url,
+            Image::make($image)->resize(300, 300)->save('upload/slider_images/' . $name_generate);
+            $save_url = 'upload/slider_images/' . $name_generate;
+            Slider::findOrFail($slider_id)->update([
+                'slider_image' => $request->slider_image,
+                'title' => $request->title,
+                'description' => $request->description,
+
+                // 'slider_slug_en' => strtolower(str_replace(' ', '-', $request->slider_name_en)),
+                // 'slider_slug_vn' => strtolower(str_replace(' ', '-', $request->slider_name_vn)),
+                // 'slider_slug_cn' => strtolower(str_replace(' ', '-', $request->slider_name_cn)),
+
+                'slider_image' => $save_url,
             ]);
             $notification = array(
                 'message' => 'Slider Updated Successfully',
                 'alert-type' => 'info',
             );
-            return redirect()->route('all.Slider')->with($notification);
+            return redirect()->route('all.slider')->with($notification);
         }else{
-            Slider::findOrFail($Slider_id)->update([
-                'Slider_name_en' => $request->Slider_name_en,
-                'Slider_name_vn' => $request->Slider_name_vn,
-                'Slider_name_cn' => $request->Slider_name_cn,
-                'Slider_slug_en' => strtolower(str_replace(' ', '-', $request->Slider_name_en)),
-                'Slider_slug_vn' => strtolower(str_replace(' ', '-', $request->Slider_name_vn)),
-                'Slider_slug_cn' => strtolower(str_replace(' ', '-', $request->Slider_name_cn)),
+            Slider::findOrFail($slider_id)->update([
+            'slider_image' => $request->slider_image,
+            'title' => $request->title,
+            'description' => $request->description,
+
+            // 'slider_slug_en' => strtolower(str_replace(' ', '-', $request->slider_name_en)),
+            // 'slider_slug_vn' => strtolower(str_replace(' ', '-', $request->slider_name_vn)),
+            // 'slider_slug_cn' => strtolower(str_replace(' ', '-', $request->slider_name_cn)),
 
             ]);
             $notification = array(
                 'message' => 'Slider Updated Successfully',
                 'alert-type' => 'info',
             );
-            return redirect()->route('all.Slider')->with($notification);
+            return redirect()->route('all.slider')->with($notification);
         }
     }
     public function SliderDelete($id){
-        $Slider = Slider::findOrFail($id);
-        $img = $Slider->Slider_image;
+        $slider = Slider::findOrFail($id);
+        $img = $slider->slider_image;
         unlink($img);
         Slider::findOrFail($id)->delete();
         $notification = array(
@@ -105,4 +108,28 @@ class SliderController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    // inactivate product
+    public function SliderInactive($id)
+    {
+        Slider::findOrFail($id)->update([
+            'status' => 0,
+        ]);
+        $notification = array(
+            'message' => 'Slider Inactivated Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+    // activate product
+    public function SliderActive($id)
+    {
+        Slider::findOrFail($id)->update([
+            'status' => 1,
+        ]);
+        $notification = array(
+            'message' => 'Slider Activated Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

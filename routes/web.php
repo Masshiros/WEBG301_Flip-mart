@@ -59,9 +59,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/change/password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
     // 6) Update change password
     Route::post('/admin/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
-    
+
     Route::prefix('admin')->group(function(){
-            
+
             // ADMIN USER ALL ROUTES
         Route::prefix('user')->group(function () {
             //1) Display All USER
@@ -101,6 +101,13 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
             //5) DELETE SLIDER
             Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+            //6) INACTIVATE SLIDER
+            Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+            //7) ACTIVATE SLIDER
+            Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+            //8) DELETE SLIDER
+            Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+
 
         });
 

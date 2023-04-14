@@ -54,7 +54,7 @@
                 </ul>
             </li>
 
-          
+
 
             <li class="treeview {{($prefix == '/category') ? 'active' : ''}}">
                 <a href="#">
@@ -84,10 +84,10 @@
 
                 </ul>
             </li>
-            
+
             <li class="treeview" {{($prefix == '/slider') ? 'active' : ''}}>
                 <a href="#">
-                    <i data-feather="file"></i>
+                    <i data-feather="image"></i>
                     <span>Slider</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
@@ -95,7 +95,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ ($route == 'manage-slider')? 'active' : '' }}"><a href="{{route('manage-slider')}}"><i class="ti-more"></i>Manage Slider</a></li>
-                   
+
 
                 </ul>
             </li>
