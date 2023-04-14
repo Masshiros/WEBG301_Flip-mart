@@ -213,3 +213,7 @@ Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdat
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 Route::get('/language/chinese', [LanguageController::class, 'Chinese'])->name('chinese.language');
 Route::get('/language/vietnamese', [LanguageController::class, 'Vietnamese'])->name('vietnamese.language');
+
+
+// FRONTEND PRODUCT DETAILS PAGE URL
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetail']);
