@@ -7,7 +7,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!---------------EDIT slider PAGE------------>
+        <!---------------EDIT SLIDER PAGE------------>
         <div class="col-12">
 
             <div class="box">
@@ -22,11 +22,11 @@
                         <input type="hidden" name="id" value="{{$slider->id}}">
                         <input type="hidden" name="old_image" value="{{$slider->slider_image}}">
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <h5>Image<span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input value="{{$slider->slider_image}}" type="file"  name="slider_image"
-                                            class="form-control">
+                                            class="form-control" ">
                                             @error('slider_image')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -47,13 +47,28 @@
                             <div class=" form-group">
                                     <h5>Description<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text"
-                                            name="description" class="form-control"
-                                            >
+                                        <input type="text" name="description"
+                                        class="form-control" ">
                                         @error('description')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
+                            </div> --}}
+                            <div class="form-group">
+                                <label for="slider_image">Image</label>
+                                <input type="file" class="form-control-file" id="slider_image" name="slider_image">
+                                <img src="{{ asset($slider->slider_image) }}" alt="Slider Image" width="100">
+                                <input type="hidden" name="old_image" value="{{ $slider->slider_image }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $slider->title }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" required>{{ $slider->description }}</textarea>
                             </div>
 
                             <div class=" text-xs-right">
