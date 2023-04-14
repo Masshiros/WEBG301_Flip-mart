@@ -31,9 +31,16 @@
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="slider_image">Image</label>
+                                <input type="file" class="form-control-file" id="slider_image" name="slider_image">
+                                <img src="{{ asset($slider->slider_image) }}" alt="Slider Image" width="100">
+                                <input type="hidden" name="old_image" value="{{ $slider->slider_image }}">
                             </div>
 
-                            <div class=" form-group">
+                            {{-- <div class=" form-group">
                                     <h5>Title <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input value="{{$slider->title}}" type="text"  name="title"
@@ -42,9 +49,14 @@
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                     </div>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $slider->title }}" required>
                             </div>
 
-                            <div class=" form-group">
+                            {{-- <div class=" form-group">
                                     <h5>Description<span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="text" name="description"
@@ -54,17 +66,6 @@
                                         @enderror
                                     </div>
                             </div> --}}
-                            <div class="form-group">
-                                <label for="slider_image">Image</label>
-                                <input type="file" class="form-control-file" id="slider_image" name="slider_image">
-                                <img src="{{ asset($slider->slider_image) }}" alt="Slider Image" width="100">
-                                <input type="hidden" name="old_image" value="{{ $slider->slider_image }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $slider->title }}" required>
-                            </div>
 
                             <div class="form-group">
                                 <label for="description">Description</label>
