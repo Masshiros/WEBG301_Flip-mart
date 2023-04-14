@@ -10,3 +10,4 @@ class Slider extends Model
     use HasFactory;
     protected $guarded = [];
 }
+    
