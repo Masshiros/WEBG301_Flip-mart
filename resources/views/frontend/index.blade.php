@@ -1,5 +1,8 @@
 @extends('frontend.main_master')
 @section('content')
+@section('title')
+Flip Mart Home 
+@endsection
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
         <div class="row">
@@ -1078,7 +1081,7 @@
                                         <div class="products">
                                             <div class="product">
                                                 <div class="product-image">
-                                                    <div class="image"> <a href="detail.html"><img
+                                                    <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en)}}"><img
                                                                 src="{{$product->product_thumbnail}}" alt=""></a>
                                                     </div>
                                                     <!-- /.image -->
@@ -1098,7 +1101,7 @@
                                                 <!-- /.product-image -->
     
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="detail.html">
+                                                    <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
                                                         @if(session()->get('language') == 'chinese') {{$product->product_name_cn}}
                                                         @elseif(session()->get('language') == 'vietnamese') {{$product->product_name_vn}}
                                                         @else {{$product->product_name_en}}
@@ -1178,7 +1181,7 @@
                                         <div class="products">
                                             <div class="product">
                                                 <div class="product-image">
-                                                    <div class="image"> <a href="detail.html"><img
+                                                    <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en)}}"><img
                                                                 src="{{$product->product_thumbnail}}" alt=""></a>
                                                     </div>
                                                     <!-- /.image -->
@@ -1198,7 +1201,7 @@
                                                 <!-- /.product-image -->
     
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="detail.html">
+                                                    <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
                                                         @if(session()->get('language') == 'chinese') {{$product->product_name_cn}}
                                                         @elseif(session()->get('language') == 'vietnamese') {{$product->product_name_vn}}
                                                         @else {{$product->product_name_en}}
