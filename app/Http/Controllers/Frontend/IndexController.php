@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,9 @@ class IndexController extends Controller
     {
         $products = Product::where('status',1)->orderBy('id','DESC')->limit(6)->get();
         $categories = Category::orderBy('category_name_en','ASC')->get();
-        return view('frontend.index',compact('categories','products'));
+        $sliders = Slider::where('status', 1)->orderBy('id','DESC')->limit(3)->get();
+        return view('frontend.index',compact('categories','products','sliders'));
+
     }
     public function UserLogout()
     {
@@ -68,7 +71,7 @@ class IndexController extends Controller
             $user = User::find(Auth::user()->id);
             $user->password = Hash::make($request->password);
             $user->save();
-          
+
             Auth::logout();
             return redirect()->route('user.logout');
         } else {

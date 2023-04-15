@@ -17,10 +17,10 @@
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                    <form method="POST" action="{{route('slider.update')}}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="id" value="{{$slider->id}}">
-                        <input type="hidden" name="old_image" value="{{$slider->slider_image}}">
+                        <form method="POST" action="{{route('slider.update')}}" enctype="multipart/form-data">
+                            {{-- @csrf
+                            <input type="hidden" name="id" value="{{$slider->id}}">
+                            <input type="hidden" name="old_image" value="{{$slider->slider_image}}"> --}}
 
                             {{-- <div class="form-group">
                                 <h5>Image<span class="text-danger">*</span></h5>
