@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Flip Mart Home 
+Flip Mart Home
 @endsection
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
@@ -297,38 +297,22 @@ Flip Mart Home
 
                 <div id="hero">
                     <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-                        <div class="item" style="background-image: url({{asset('frontend/assets/images/sliders/01.jpg')}});">
-                            <div class="container-fluid">
-                                <div class="caption bg-color vertical-center text-left">
-                                    <div class="slider-header fadeInDown-1">Top Brands</div>
-                                    <div class="big-text fadeInDown-1"> New Collections </div>
-                                    <div class="excerpt fadeInDown-2 hidden-xs"> <span>Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing elit.</span> </div>
-                                    <div class="button-holder fadeInDown-3"> <a href="index.php?page=single-product"
-                                            class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
-                                            Now</a> </div>
-                                </div>
-                                <!-- /.caption -->
-                            </div>
-                            <!-- /.container-fluid -->
-                        </div>
-                        <!-- /.item -->
-
-                        <div class="item" style="background-image: url({{asset('frontend/assets/images/sliders/02.jpg')}});">
-                            <div class="container-fluid">
-                                <div class="caption bg-color vertical-center text-left">
-                                    <div class="slider-header fadeInDown-1">Spring 2016</div>
-                                    <div class="big-text fadeInDown-1"> Women <span class="highlight">Fashion</span>
+                        @foreach($sliders as $slider)
+                            <div class="item" style="background-image: url({{ asset($slider->slider_image) }});">
+                                <div class="container-fluid">
+                                    <div class="caption bg-color vertical-center text-left">
+                                        <div class="slider-header fadeInDown-1">Spring 2016</div>
+                                        <div class="big-text fadeInDown-1"> <span class="highlight">{{ $slider->title }}</span>
+                                        </div>
+                                        <div class="excerpt fadeInDown-2 hidden-xs"> <span>{{ $slider->description }}</span> </div>
+                                        <div class="button-holder fadeInDown-3"> <a href="index.php?page=single-product"
+                                                class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
+                                                Now</a> </div>
                                     </div>
-                                    <div class="excerpt fadeInDown-2 hidden-xs"> <span>Nemo enim ipsam voluptatem
-                                            quia voluptas sit aspernatur aut odit aut fugit</span> </div>
-                                    <div class="button-holder fadeInDown-3"> <a href="index.php?page=single-product"
-                                            class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
-                                            Now</a> </div>
+                                    <!-- /.caption -->
                                 </div>
-                                <!-- /.caption -->
-                            </div>
-                            <!-- /.container-fluid -->
+                                <!-- /.container-fluid -->
+                        @endforeach
                         </div>
                         <!-- /.item -->
 
@@ -392,7 +376,7 @@ Flip Mart Home
                             @if(session()->get('language') == 'chinese') 新产品
                             @elseif(session()->get('language') == 'vietnamese') Sản phẩm mới
                             @else New Products
-                            @endif 
+                            @endif
                         </h3>
                         <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
                             <li class="active"><a data-transition-type="backSlide" href="#all"
@@ -403,7 +387,7 @@ Flip Mart Home
                                 @if(session()->get('language') == 'chinese') {{$category->category_name_cn}}
                                 @elseif(session()->get('language') == 'vietnamese') {{$category->category_name_vn}}
                                 @else {{$category->category_name_en}}
-                                @endif 
+                                @endif
                                 </a></li>
                             @endforeach
                             {{-- <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a>
@@ -412,8 +396,8 @@ Flip Mart Home
                         </ul>
                         <!-- /.nav-tabs -->
                     </div>
-                   
-                  
+
+
                     <div class="tab-content outer-top-xs">
                         <div class="tab-pane in active" id="all">
                             <div class="product-slider">
@@ -438,16 +422,16 @@ Flip Mart Home
                                                         <div class="tag new"><span>{{round($discount)}} %</span></div>
                                                         @endif
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <!-- /.product-image -->
-    
+
                                                 <div class="product-info text-left">
                                                     <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
                                                         @if(session()->get('language') == 'chinese') {{$product->product_name_cn}}
                                                         @elseif(session()->get('language') == 'vietnamese') {{$product->product_name_vn}}
                                                         @else {{$product->product_name_en}}
-                                                        @endif 
+                                                        @endif
                                                     </a>
                                                     </h3>
                                                     <div class="rating rateit-small"></div>
@@ -455,18 +439,18 @@ Flip Mart Home
                                                     @if($product->discount_price == NULL)
                                                     <div class="product-price"> 
                                                         <span class="price"> 
-                                                        ${{$product->selling_price}}
+                                                        $ {{$product->selling_price}}
                                                         </span>
                                                     </div>
                                                     @else
                                                     <div class="product-price"> <span class="price"> 
-                                                        ${{$product->discount_price}}
+                                                        $ {{$product->discount_price}}
                                                     </span>
                                                         <span class="price-before-discount">${{$product->selling_price}}</span> </div>
                                                     <!-- /.product-price -->
                                                     @endif
-                                                    
-    
+
+
                                                 </div>
                                                 <!-- /.product-info -->
                                                 <div class="cart clearfix animate-effect">
@@ -495,7 +479,7 @@ Flip Mart Home
                                                 <!-- /.cart -->
                                             </div>
                                             <!-- /.product -->
-    
+
                                         </div>
                                         <!-- /.products -->
                                     </div>
@@ -538,35 +522,35 @@ Flip Mart Home
                                                         <div class="tag new"><span>{{round($discount)}} %</span></div>
                                                         @endif
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <!-- /.product-image -->
-    
+
                                                 <div class="product-info text-left">
                                                     <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
                                                         @if(session()->get('language') == 'chinese') {{$product->product_name_cn}}
                                                         @elseif(session()->get('language') == 'vietnamese') {{$product->product_name_vn}}
                                                         @else {{$product->product_name_en}}
-                                                        @endif 
+                                                        @endif
                                                     </a>
                                                     </h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
                                                     @if($product->discount_price == NULL)
-                                                    <div class="product-price"> 
-                                                        <span class="price"> 
+                                                    <div class="product-price">
+                                                        <span class="price">
                                                         $ {{$product->selling_price}}
                                                         </span>
                                                     </div>
                                                     @else
-                                                    <div class="product-price"> <span class="price"> 
+                                                    <div class="product-price"> <span class="price">
                                                         $ {{$product->discount_price}}
                                                     </span>
                                                         <span class="price-before-discount">$ {{$product->selling_price}}</span> </div>
                                                     <!-- /.product-price -->
                                                     @endif
-                                                    
-    
+
+
                                                 </div>
                                                 <!-- /.product-info -->
                                                 <div class="cart clearfix animate-effect">
@@ -595,7 +579,7 @@ Flip Mart Home
                                                 <!-- /.cart -->
                                             </div>
                                             <!-- /.product -->
-    
+
                                         </div>
                                         <!-- /.products -->
                                     </div>
@@ -605,7 +589,7 @@ Flip Mart Home
                                         @if(session()->get('language') == 'chinese') 没有找到产品
                                         @elseif(session()->get('language') == 'vietnamese') Không Tìm Thấy Sản Phẩm
                                         @else No Product Found
-                                        @endif 
+                                        @endif
 
                                     </h5>
                                     @endforelse

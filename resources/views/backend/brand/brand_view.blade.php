@@ -51,15 +51,17 @@
             </div>
             <!-- /.box-body -->
           </div>
-This is a PHP code snippet that defines a model class named "Slider" within the "App\Models" namespace. This class extends the "Illuminate\Database\Eloquent\Model" class and utilizes the "Illuminate\Database\Eloquent\Factories\HasFactory" trait.
+
+{{-- This is a PHP code snippet that defines a model class named "Slider" within the "App\Models" namespace. This class extends the "Illuminate\Database\Eloquent\Model" class and utilizes the "Illuminate\Database\Eloquent\Factories\HasFactory" trait.
 
 The "HasFactory" trait provides a factory builder method to the model, allowing for easy creation of model instances for testing and seeding purposes.
 
 The "protected $guarded = []" statement indicates that no attributes are protected from mass-assignment. This means that any attribute can be set using the "create" or "update" methods of the model without explicitly setting each attribute.
 
-Overall, this code defines a basic model for a slider that can be used to interact with a database using the Laravel framework.
-        </div>
-        <!-- /.col -->
+Overall, this code defines a basic model for a slider that can be used to interact with a database using the Laravel framework. --}}
+</div>
+<!-- /.col -->
+
         <!---------------ADD BRAND PAGE------------>
         <div class="col-4">
 

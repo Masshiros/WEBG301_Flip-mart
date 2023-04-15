@@ -36,9 +36,6 @@ class SliderController extends Controller
             'title' => $request->title,
             'description' => $request->description,
 
-            // 'slider_image' => strtolower(str_replace(' ', '-', $request->slider_image)),
-            // 'title' => strtolower(str_replace(' ', '-', $request->title)),
-            // 'description' => strtolower(str_replace(' ', '-', $request->description)),
             'slider_image' => $save_url,
         ]);
         $notification = array(
@@ -47,13 +44,26 @@ class SliderController extends Controller
         );
         return redirect()->back()->with($notification);
     }
-    public function SliderEdit($id){
+
+    public function SliderEdit($id)
+    {
         $slider = Slider::findOrFail($id);
         return view('backend.slider.slider_edit', compact('slider'));
     }
+
     public function SliderUpdate(Request $request ){
-        $slider_id = $request->id;
+        $slider_id = $request->id;  
         $old_img = $request->old_image;
+
+         $request->validate([
+            'slider_image' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+        ], [
+            'slider_image.required' => 'Please Input Slider Image',
+            'title.required' => 'Please Input Slider Title',
+            'description.required' => 'Please Input Slider Description',
+        ]);
         // if user choose any image
         if($request->file('slider_image')){
             unlink($old_img);
@@ -66,9 +76,6 @@ class SliderController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
 
-                // 'slider_image' => strtolower(str_replace(' ', '-', $request->slider_image)),
-                // 'title' => strtolower(str_replace(' ', '-', $request->title)),
-                // 'description' => strtolower(str_replace(' ', '-', $request->description)),
                 'slider_image' => $save_url,
             ]);
             $notification = array(
@@ -82,11 +89,7 @@ class SliderController extends Controller
             'title' => $request->title,
             'description' => $request->description,
 
-            // 'slider_image' => strtolower(str_replace(' ', '-', $request->slider_image)),
-            // 'title' => strtolower(str_replace(' ', '-', $request->title)),
-            // 'description' => strtolower(str_replace(' ', '-', $request->description)),
-
-            ]);
+                ]);
             $notification = array(
                 'message' => 'Slider Updated Successfully',
                 'alert-type' => 'info',
@@ -94,7 +97,7 @@ class SliderController extends Controller
             return redirect()->route('manage-slider')->with($notification);
         }
     }
-
+// ==========================ACTION===========================
     // inactivate Slider
     public function SliderInactive($id)
     {
