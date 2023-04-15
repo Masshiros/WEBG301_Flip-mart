@@ -224,3 +224,6 @@ Route::get('/language/vietnamese', [LanguageController::class, 'Vietnamese'])->n
 
 // FRONTEND PRODUCT DETAILS PAGE URL
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetail']);
+
+// FRONTEND PRODUCT TAGS PAGE URL
+Route::get('/product/tag/{tag}', [IndexController::class, 'ProductByTags']);

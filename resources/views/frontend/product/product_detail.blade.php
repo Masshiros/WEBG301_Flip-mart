@@ -10,7 +10,11 @@
 			<ul class="list-inline list-unstyled">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Clothing</a></li>
-				<li class='active'>Floral Print Buttoned</li>
+				<li class='active'>
+					@if(session()->get('language') == 'chinese') {{$product->product_name_cn}}
+					@elseif(session()->get('language') == 'vietnamese') {{$product->product_name_vn}}
+					@else {{$product->product_name_en}}
+					@endif </li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->

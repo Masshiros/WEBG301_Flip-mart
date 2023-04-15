@@ -17,7 +17,12 @@ class IndexController extends Controller
     {
         $products = Product::where('status',1)->orderBy('id','DESC')->limit(6)->get();
         $categories = Category::orderBy('category_name_en','ASC')->get();
-        return view('frontend.index',compact('categories','products'));
+        $featuredProduct = Product::where('featured',1)->orderBy('id','DESC')->limit(6)->get();
+        $hot_dealProduct = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(3)->get();
+        $special_offerProduct = Product::where('special_offer',1)->orderBy('id','DESC')->limit(6)->get();
+        $special_dealsProduct = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
+        $skip_category = Category::skip(0)->first();
+        return view('frontend.index',compact('categories','products','featuredProduct','hot_dealProduct','special_offerProduct','special_dealsProduct'));
     }
     public function UserLogout()
     {
@@ -79,5 +84,11 @@ class IndexController extends Controller
         $product = Product::findOrFail($id);
         $multiImages = MultiImg::where('product_id',$id)->get();
         return view('frontend.product.product_detail',compact('product','multiImages'));
+    }
+
+    public function ProductByTags($tag){
+        $products = Product::where('status',1)->where('product_tags_en',$tag)
+        ->where('product_tags_cn',$tag)->where('product_tags_vn',$tag)->orderBy('id','DESC')->get();
+        return view('frontend.tags.tags_view',compact('products'));
     }
 }

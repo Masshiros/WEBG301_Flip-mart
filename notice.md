@@ -24,3 +24,6 @@
 ### 3. Reset password
 - Need validation 
 
+### 4. Detail 
+- Some bug in breadcrumb-inner (UI bug)
+
