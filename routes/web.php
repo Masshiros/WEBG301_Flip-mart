@@ -227,3 +227,9 @@ Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDeta
 
 // FRONTEND PRODUCT TAGS PAGE URL
 Route::get('/product/tag/{tag}', [IndexController::class, 'ProductByTags']);
+
+// FRONTEND SUBCATEGORY WISE DATA
+Route::get('/subcategory/product/{id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
+
+// FRONTEND SUBSUBCATEGORY WISE DATA
+Route::get('/subsubcategory/product/{id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']);

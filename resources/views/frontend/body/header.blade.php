@@ -243,12 +243,14 @@
                                                     @endphp
                                                     @foreach($subcategories as $subcategory)
                                                     <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                        <h2 class="title">
-                                                        @if(session()->get('language') == 'chinese') {{$subcategory->subcategory_name_cn}}
-                                                        @elseif(session()->get('language') == 'vietnamese') {{$subcategory->subcategory_name_vn}}
-                                                        @else {{$subcategory->subcategory_name_en}}
-                                                        @endif
-                                                        </h2>
+                                                        <a href="{{url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en)}}">
+                                                            <h2 class="title">
+                                                                @if(session()->get('language') == 'chinese') {{$subcategory->subcategory_name_cn}}
+                                                                @elseif(session()->get('language') == 'vietnamese') {{$subcategory->subcategory_name_vn}}
+                                                                @else {{$subcategory->subcategory_name_en}}
+                                                                @endif
+                                                            </h2>
+                                                        </a>
                                                        
                                                         
                                                         <!-- GET SUBSUBCATEGORY DATA -->
@@ -257,7 +259,7 @@
                                                         @endphp
                                                         <ul class="links">
                                                         @foreach($subsubcategories as $subsubcategory)
-                                                            <li><a href="#">
+                                                            <li><a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}">
                                                             @if(session()->get('language') == 'chinese') {{$subsubcategory->subsubcategory_name_cn}}
                                                             @elseif(session()->get('language') == 'vietnamese') {{$subsubcategory->subsubcategory_name_vn}}
                                                             @else {{$subsubcategory->subsubcategory_name_en}}

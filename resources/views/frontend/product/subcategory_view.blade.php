@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Tag Wise Product
+Subcategory Product
 @endsection
 
 
@@ -51,7 +51,7 @@ Tag Wise Product
                             $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name_en','ASC')->get();
                             @endphp
                             @foreach($subcategories as $subcategory)
-                              <li><a href="#">
+                              <li><a href="{{url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en)}}">
                                 @if(session()->get('language') == 'chinese') {{$subcategory->subcategory_name_cn}}
                                 @elseif(session()->get('language') == 'vietnamese') {{$subcategory->subcategory_name_vn}}
                                 @else {{$subcategory->subcategory_name_en}}
