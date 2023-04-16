@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Models\User;
@@ -60,9 +61,9 @@ Route::middleware(['auth:admin'])->group(function () {
     // 6) Update change password
     Route::post('/admin/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
 
-    Route::prefix('admin')->group(function(){
+    Route::prefix('admin')->group(function () {
 
-            // ADMIN USER ALL ROUTES
+        // ADMIN USER ALL ROUTES
         Route::prefix('user')->group(function () {
             //1) Display All USER
             Route::get('/view', [UserController::class, 'UserView'])->name('all.user');
@@ -107,7 +108,6 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
             //8) DELETE SLIDER
             Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
-
 
         });
 
@@ -188,7 +188,6 @@ Route::middleware(['auth:admin'])->group(function () {
     });
 });
 
-
 //USER ALL ROUTE
 
 Route::middleware([
@@ -221,7 +220,6 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 Route::get('/language/chinese', [LanguageController::class, 'Chinese'])->name('chinese.language');
 Route::get('/language/vietnamese', [LanguageController::class, 'Vietnamese'])->name('vietnamese.language');
 
-
 // FRONTEND PRODUCT DETAILS PAGE URL
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetail']);
 
@@ -233,3 +231,9 @@ Route::get('/subcategory/product/{id}/{slug}', [IndexController::class, 'SubCatW
 
 // FRONTEND SUBSUBCATEGORY WISE DATA
 Route::get('/subsubcategory/product/{id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']);
+
+// FRONTEND PRODUCT VIEW MODAL WITH ajax
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
+
+// ADD TO CART STORE DATA
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);

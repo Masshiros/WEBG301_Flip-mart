@@ -140,4 +140,70 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name_en','ASC')->get();
         return view('frontend.product.subsubcategory_view',compact('products','categories'));
     }
+    // AJAX - product modal view
+    public function ProductViewAjax($id){
+        $product = Product::findOrFail($id);
+        // name 
+        $product_name_en = $product->product_name_en;
+        $product_name_cn = $product->product_name_cn;
+        $product_name_vn = $product->product_name_vn;
+        // category
+        $category_name_en = $product->subsubcategory->subcategory->category['category_name_en'];
+        $category_name_cn = $product->subsubcategory->subcategory->category['category_name_cn'];
+        $category_name_vn = $product->subsubcategory->subcategory->category['category_name_vn'];
+        // brand
+        $brand_name_en = $product->brand['brand_name_en'];
+        $brand_name_cn = $product->brand['brand_name_cn'];
+        $brand_name_vn = $product->brand['brand_name_vn'];
+        // COLOR
+        $color_en = $product->product_color_en;
+        $product_color_en = explode(',',$color_en);
+        $color_cn = $product->product_color_cn;
+        $product_color_cn = explode(',',$color_cn);
+        $color_vn = $product->product_color_vn;
+        $product_color_vn = explode(',',$color_vn);
+
+        // SIZE
+        $size_en = $product->product_size_en;
+        $product_size_en = explode(',',$size_en);
+        $size_cn = $product->product_size_cn;
+        $product_size_cn = explode(',',$size_cn);
+        $size_vn = $product->product_size_vn;
+        $product_size_vn = explode(',',$size_vn);
+        $language = session('language');
+        switch($language){
+            case 'chinese' :
+                return response()->json(array(
+                    'product' => $product,
+                    'brand' => $brand_name_cn,
+                    'pname' =>$product_name_cn,
+                    'category' => $category_name_cn,
+                    'color' => $product_color_cn,
+                    'size' => $product_size_cn,
+                ));
+                break;
+            case 'vietnamese' :
+                return response()->json(array(
+                    'product' => $product,
+                    'brand' => $brand_name_vn,
+                    'pname' =>$product_name_vn,
+                    'category' => $category_name_vn,
+                    'color' => $product_color_vn,
+                    'size' => $product_size_vn,
+                ));
+                break;
+            default: 
+                return response()->json(array(
+                    'product' => $product,
+                    'brand' => $brand_name_en,
+                    'pname' =>$product_name_en,
+                    'category' => $category_name_en,
+                    'color' => $product_color_en,
+                    'size' => $product_size_en,
+                ));
+                break;
+
+        }
+        
+    }
 }
