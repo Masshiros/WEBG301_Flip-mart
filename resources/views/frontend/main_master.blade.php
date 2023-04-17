@@ -282,7 +282,7 @@ function addToCart(){
                                         </div>
                                         <div class="col-xs-7">
                                             <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
-                                            <div class="price">$${value.price}*${value.qty}</div>
+                                            <div class="price">$${value.price}- Qty:${value.qty}</div>
                                         </div>
                                         <div class="col-xs-1 action"> <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button>
                                         </div>

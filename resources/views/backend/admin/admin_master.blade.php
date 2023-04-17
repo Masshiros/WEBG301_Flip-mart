@@ -26,17 +26,17 @@
 
     <div class="wrapper">
 
-        @include('admin.body.header')
+        @include('backend.admin.body.header')
 
         <!-- Left side column. contains the logo and sidebar -->
-        @include('admin.body.sidebar')
+        @include('backend.admin.body.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('admin')
         </div>
         <!-- /.content-wrapper -->
-        @include('admin.body.footer')
+        @include('backend.admin.body.footer')
 
 
 

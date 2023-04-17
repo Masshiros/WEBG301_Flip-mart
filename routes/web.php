@@ -44,7 +44,7 @@ Route::middleware(['auth:admin'])->group(function () {
         'verified',
     ])->group(function () {
         Route::get('/admin/dashboard', function () {
-            return view('admin.index');
+            return view('backend.admin.index');
         })->name('dashboard');
     });
     // ADMIN AUTH ALL ROUTES
