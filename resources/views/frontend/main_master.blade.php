@@ -233,6 +233,7 @@ function addToCart(){
             product_name: product_name,
         },
         success:function(data){
+            miniCart();
             $('#closeModal').click();
             // console.log(data);
             // Start Message
@@ -260,6 +261,74 @@ function addToCart(){
 }
 
 // End Add to Cart Product
+</script>
+<script type="text/javascript">
+    function miniCart(){
+        $.ajax({
+            type: 'GET',
+            url: `/product/mini-cart`,
+            dataType: 'json',
+            success: function(response){
+                // console.log(response);
+                $('span[id=cartSubTotal]').text(response.cartTotal);
+                $('#cartQuantity').text(response.cartQuantity);
+                var miniCart = "";
+                $.each(response.carts, function(key,value){
+                    miniCart += `<div class="cart-item product-summary">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <div class="image"> <a href="detail.html"><img
+                                                        src="/${value.options.image}" alt=""></a> </div>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
+                                            <div class="price">$${value.price}*${value.qty}</div>
+                                        </div>
+                                        <div class="col-xs-1 action"> <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.cart-item -->
+                                <div class="clearfix"></div>
+                                <hr>`
+                             });
+                $('#miniCart').html(miniCart);
+            }
+        })
+    }
+miniCart();
+// remove mini cart Start
+function miniCartRemove(id){
+    $.ajax({
+        type: 'GET',
+        url: '/product/mini-cart/remove/'+id,
+        dataType: 'json',
+        success:function(data){
+            miniCart();
+            // Start Message
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000
+                })
+                if($.isEmptyObject(data.error)){
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+            // End Message
+        }
+    })
+}
+// remove mini cart End
 </script>
 </body>
 
