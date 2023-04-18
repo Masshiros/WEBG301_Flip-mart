@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
@@ -61,4 +64,5 @@ class CartController extends Controller
         Cart::remove($id);
         return response()->json(['success' => 'Product Remove From Cart Successfully']);
     }
+   
 }
