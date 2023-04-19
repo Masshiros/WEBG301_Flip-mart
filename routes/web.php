@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\CouponController;
 
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -187,6 +188,21 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
             // 12) Display Detail Page
             Route::get('/detail/{id}', [ProductController::class, 'ProductDetail'])->name('product.detail');
+
+        });
+         // ADMIN COUPONS ALL ROUTES
+         Route::prefix('coupons')->group(function () {
+            //1) Display All Coupon
+            Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
+            //2) Add new Coupon
+            Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
+            //3) Display Coupon Edit
+            Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
+            //4) Update
+            Route::post('/update', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
+            //5) Delete One Coupon
+            Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
+            
 
         });
     });
