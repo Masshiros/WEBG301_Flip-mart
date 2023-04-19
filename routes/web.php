@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
 
 use App\Http\Controllers\User\WishlistController;
+use App\Http\Controllers\User\CartPageController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -242,7 +243,7 @@ Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax
 // ADD TO CART STORE DATA
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 
-// GET DATA FROM MINI CART
+// ADD DATA TO MINI CART
 Route::get('/product/mini-cart', [CartController::class, 'AddToMiniCart']);
 
 // FRONTEND REMOVE MINI CART
@@ -262,4 +263,21 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
 
     // FRONTEND REMOVE WISHLIST PRODUCT
     Route::get('/wishlist-remove/{product_id}', [WishlistController::class, 'RemoveWishlistProduct']);
+
+   
 });
+/////////////////////MY CART PAGE ALL ROUTES ////////////////
+ // FRONTEND MYCART PAGE
+ Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
+    
+ // FRONTEND GET MYCART PRODUCT
+ Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);
+ 
+ // FRONTEND REMOVE MYCART PRODUCT
+ Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
+ 
+ // FRONTEND  MYCART PRODUCT INCREMENT QUANTITY
+ Route::get('/cart-increment/{id}', [CartPageController::class, 'CartIncrement']);
+ 
+ // FRONTEND  MYCART PRODUCT DECREMENT QUANTITY
+ Route::get('/cart-decrement/{id}', [CartPageController::class, 'CartDecrement']);
