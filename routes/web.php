@@ -297,3 +297,13 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
  
  // FRONTEND  MYCART PRODUCT DECREMENT QUANTITY
  Route::get('/cart-decrement/{id}', [CartPageController::class, 'CartDecrement']);
+
+
+ // FRONTEND COUPON OPTION
+Route::post('/coupon-apply',[CartController::class,'CouponApply']);
+
+ // FRONTEND COUPON CALCULATION
+Route::get('/coupon-calculation',[CartController::class,'CouponCalculation']);
+
+ // FRONTEND COUPON  REMOVE
+Route::get('/coupon-remove',[CartController::class,'CouponRemove']);
