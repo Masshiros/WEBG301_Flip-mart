@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -204,6 +205,32 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
             
 
+        });
+         // ADMIN SHIPPING ALL ROUTES
+         Route::prefix('shipping')->group(function () {
+            // SHIP PROVINCE
+            //1) Display All Province
+            Route::get('/province/view', [ShippingAreaController::class, 'ProvinceView'])->name('manage-province');
+            //2) Add new Province
+            Route::post('/province/store', [ShippingAreaController::class, 'ProvinceStore'])->name('province.store');
+            //3) Display Province Edit
+            Route::get('/province/edit/{id}', [ShippingAreaController::class, 'ProvinceEdit'])->name('province.edit');
+            //4) Update
+            Route::post('/province/update', [ShippingAreaController::class, 'ProvinceUpdate'])->name('province.update');
+            //5) Delete One Province
+            Route::get('/province/delete/{id}', [ShippingAreaController::class, 'ProvinceDelete'])->name('province.delete');
+            
+            // SHIP DISTRICT
+            //1) Display All District
+            Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
+            //2) Add new District
+            Route::post('/district/store', [ShippingAreaController::class, 'DistrictStore'])->name('district.store');
+            //3) Display District Edit
+            Route::get('/district/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');
+            //4) Update
+            Route::post('/district/update', [ShippingAreaController::class, 'DistrictUpdate'])->name('district.update');
+            //5) Delete One District
+            Route::get('/district/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete');
         });
     });
 });
