@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\ShipProvince;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -112,5 +114,31 @@ class CartController extends Controller
     public function CouponRemove(){
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Remove Successfully']);
+    }// end method
+
+    // CREATE CHECKOUT
+    public function CheckoutCreate(){
+        if(Auth::check()){
+            if(Cart::total() > 0){
+                $carts = Cart::content();
+                $cartQuantity = Cart::count();
+                $cartTotal = Cart::total();
+                $provinces = ShipProvince::orderBy('province_name','ASC')->get();
+                return view('frontend.checkout.view_checkout',compact('carts','cartQuantity','cartTotal','provinces'));
+            }
+            else{
+                $notification = array(
+                    'message' => 'Shopping At list One Product',
+                    'alert-type' => 'error',
+                );
+                return redirect()->to('/')->with($notification);
+            }
+        }else{
+            $notification = array(
+                'message' => 'You Need to Login First',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('login')->with($notification);
+        }
     }// end method
 }
