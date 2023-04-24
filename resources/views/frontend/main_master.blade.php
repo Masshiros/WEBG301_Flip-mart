@@ -35,6 +35,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     {{-- AJAX --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    {{-- STRIPE UI --}}
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body class="cnt-home">
@@ -352,14 +355,14 @@ function miniCartRemove(id){
                 })
                 if($.isEmptyObject(data.error)){
                     Toast.fire({
-                        type: 'success',
+                        
                         icon: 'success',
                         position: 'top-end',
                         title: data.success
                     })
                 }else{
                     Toast.fire({
-                        type: 'error',
+                        
                         icon: 'error',
                         position: 'top-end',
                         title: data.error
@@ -429,13 +432,13 @@ function wishlistRemove(product_id){
                 })
                 if($.isEmptyObject(data.error)){
                     Toast.fire({
-                        type: 'success',
+                        
                         icon: 'success',
                         title: data.success
                     })
                 }else{
                     Toast.fire({
-                        type: 'error',
+                        
                         icon: 'error',
                         title: data.error
                     })
@@ -522,13 +525,13 @@ function cartRemove(id){
                 })
                 if($.isEmptyObject(data.error)){
                     Toast.fire({
-                        type: 'success',
+                        
                         icon: 'success',
                         title: data.success
                     })
                 }else{
                     Toast.fire({
-                        type: 'error',
+                        
                         icon: 'error',
                         title: data.error
                     })
@@ -584,7 +587,9 @@ function cartDecrement(id){
             url: "{{url('/coupon-apply')}}",
             success: function(data){
                 couponCalculation();
-                $('#couponField').hide();
+                if(data.validity == true){
+                    $('#couponField').hide();
+                }
                 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
@@ -595,13 +600,12 @@ function cartDecrement(id){
                     })
                     if($.isEmptyObject(data.error)){
                         Toast.fire({
-                            type: 'success',
+                            
                             icon: 'success',
                             title: data.success
                         })
                     }else{
-                        Toast.fire({
-                            type: 'error',
+                        Toast.fire({  
                             icon: 'error',
                             title: data.error
                         })
@@ -680,13 +684,13 @@ couponCalculation();
                     })
                     if($.isEmptyObject(data.error)){
                         Toast.fire({
-                            type: 'success',
+                            
                             icon: 'success',
                             title: data.success
                         })
                     }else{
                         Toast.fire({
-                            type: 'error',
+                            
                             icon: 'error',
                             title: data.error
                         })

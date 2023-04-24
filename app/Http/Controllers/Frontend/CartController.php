@@ -87,11 +87,12 @@ class CartController extends Controller
                 'total_amount' => floatval(round($total - $total * $coupon->coupon_discount / 100)),
             ]);
             return response()->json(array(
+                'validity' => true,
                 'success' => 'Coupon Applied Successfully',
 
             ));
         } else {
-            return response()->json(['error', 'Invalid Coupon']);
+            return response()->json(['error' => 'Invalid Coupon']);
         }
     } // end method
     public function CouponCalculation()
