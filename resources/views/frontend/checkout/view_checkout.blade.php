@@ -193,7 +193,7 @@ My Checkout
                                         <div class="col-md-4">                        
                                             <label for="">Cash</label>
                                             <input type="radio" name="payment_method" value="cash">
-                                            <img src="{{asset('frontend/assets/images/payments/2.png')}}" alt="">
+                                            <img src="{{asset('frontend/assets/images/payments/6.png')}}" alt="">
                                         </div><!-- end col-md-4-->
                                         
                                     </div> <!-- end row-->

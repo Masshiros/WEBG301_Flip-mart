@@ -53,15 +53,16 @@ width: 100% !important;
 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
 <tr>
 <td align="center" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<table class="table" border="0" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
 <tr>
 <td style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
 
 </td>
-<td> Invoice No: {{$order['invoice_no']}}</td>
-<td> Amount: {{$order['amount']}}</td>
-<td> Name: {{$order['name']}}</td>
-<td> Email: {{$order['email']}}</td>
+<td class="col-md-2"> <b> Invoice No:</b> {{$order['invoice_no']}}</td>
+<td class="col-md-2"> <b> Amount:</b> {{$order['amount']}}</td>
+<td class="col-md-2"> <b> Name:</b> {{$order['name']}}</td>
+<td class="col-md-2"> <b> Email:</b> {{$order['email']}}</td>
+<td class="col-md-4"> <b> Payment Type:</b> {{$order['payment_type']}}</td>
 </tr>
 </table>
 </td>

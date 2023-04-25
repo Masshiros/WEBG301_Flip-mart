@@ -19,6 +19,8 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\User\MainUserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -345,7 +347,16 @@ Route::get('/district/ajax/{id}',[CheckoutController::class,'DistrictGetAjax']);
 // STORE CHECKOUT
 Route::post('/checkout/store',[CheckoutController::class,'CheckoutStore'])->name('checkout.store');
 
-// STRIPE ORDER
+
+// FRONTEND ORDER
 Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'User'],function(){ 
+    // INSERT ORDER + ORDER DETAIL TO DB AND STRIPE
     Route::post('/stripe/order',[StripeController::class,'StripeOrder'])->name('stripe.order');
+    // CASH ON DELIVERY
+    Route::post('/cash/order',[CashController::class,'CashOrder'])->name('cash.order');
+    // READ ORDER IN PROFILE
+    Route::get('/my-orders',[MainUserController::class,'MyOrders'])->name('my.orders');
+    // READ ORDER DETAIL IN PROFILE
+    Route::get('/order_details/{id}',[MainUserController::class,'OrderDetail']);
+    
 });
