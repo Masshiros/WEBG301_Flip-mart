@@ -39,16 +39,25 @@ My Checkout
                                                     <label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b> <span>*</span></label>
                                                     <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" 
                                                     id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name}}" require="">
+                                                    @error('shipping_name')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                             </div> {{--end form group --}}
                                                 <div class="form-group">
                                                     <label class="info-title" for="exampleInputEmail1"><b>Email </b><span>*</span></label>
                                                     <input type="text" name="shipping_email" class="form-control unicase-form-control text-input" 
                                                     id="exampleInputEmail1" placeholder="Email" value="{{ Auth::user()->email}}" require="">
+                                                    @error('shipping_email')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                             </div> {{--end form group --}}
                                                 <div class="form-group">
                                                     <label class="info-title" for="exampleInputEmail1"><b>Phone </b><span>*</span></label>
                                                     <input type="text" name="shipping_phone" class="form-control unicase-form-control text-input" 
                                                     id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone}}" require="">
+                                                    @error('shipping_phone')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                             </div> {{--end form group --}}
                                                 <div class="form-group">
                                                     <label class="info-title" for="exampleInputEmail1"><b>Post code</b> <span>*</span></label>
@@ -195,6 +204,9 @@ My Checkout
                                             <input type="radio" name="payment_method" value="cash">
                                             <img src="{{asset('frontend/assets/images/payments/6.png')}}" alt="">
                                         </div><!-- end col-md-4-->
+                                        @error('payment_method')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                         
                                     </div> <!-- end row-->
                                     <hr>

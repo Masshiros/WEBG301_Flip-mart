@@ -16,6 +16,15 @@ class CheckoutController extends Controller
     }
     public function CheckoutStore(Request $request){
         // dd($request->all());
+        $request->validate([
+            'province_id' => 'required',
+            'district_id' => 'required',
+            'payment_method' => 'required',
+        ], [
+            'province_id.required' => 'Please Select Your Province For Shipping Purpose',
+            'district_id.required' => 'Please Select Your District For Shipping Purpose',
+            'payment_method.required' => 'Please Select Payment Method',
+        ]);
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_email'] = $request->shipping_email;

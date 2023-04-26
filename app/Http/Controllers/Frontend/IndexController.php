@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
 use App\Models\Slider;
+use App\Models\SubCategory;
+use App\Models\SubSubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -116,11 +118,12 @@ class IndexController extends Controller
     }
     // tag-wised product
     public function ProductByTags($tag){
+        $tag = $tag;
         $products = Product::where('status',1)->where('product_tags_en',$tag)
         ->orWhere('product_tags_cn',$tag)->orWhere('product_tags_vn',$tag)
         ->orderBy('id','DESC')->paginate(3);
         $categories = Category::orderBy('category_name_en','ASC')->get();
-        return view('frontend.tags.tags_view',compact('products','categories'));
+        return view('frontend.tags.tags_view',compact('products','categories','tag'));
     }
     // subcategory-wised product
     public function SubCatWiseProduct($id, $slug){
@@ -130,15 +133,24 @@ class IndexController extends Controller
         })
         ->orderBy('id', 'DESC')
         ->paginate(3);
+        $subcategory = SubCategory::findOrFail($id);
+        $sub_name_en = $subcategory['subcategory_name_en'];
+        $sub_name_cn = $subcategory['subcategory_name_cn'];
+        $sub_name_vn = $subcategory['subcategory_name_vn'];
+        
         $categories = Category::orderBy('category_name_en','ASC')->get();
-        return view('frontend.product.subcategory_view',compact('products','categories'));
+        return view('frontend.product.subcategory_view',compact('products','categories','sub_name_en','sub_name_cn','sub_name_vn'));
     }
     // subsubcategory-wised product
     public function SubSubCatWiseProduct($id, $slug){
         $products = Product::where('status', 1)->where('subsubcategory_id',$id)
         ->orderBy('id', 'DESC')->paginate(3);
         $categories = Category::orderBy('category_name_en','ASC')->get();
-        return view('frontend.product.subsubcategory_view',compact('products','categories'));
+        $subsubcategory = SubSubCategory::findOrFail($id);
+        $subsub_name_en = $subsubcategory['subsubcategory_name_en'];
+        $subsub_name_cn = $subsubcategory['subsubcategory_name_cn'];
+        $subsub_name_vn = $subsubcategory['subsubcategory_name_vn'];
+        return view('frontend.product.subsubcategory_view',compact('products','categories','subsub_name_en','subsub_name_cn','subsub_name_vn'));
     }
     // AJAX - product modal view
     public function ProductViewAjax($id){
