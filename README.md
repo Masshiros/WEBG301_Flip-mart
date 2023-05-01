@@ -25,4 +25,5 @@ To use the website, you need to have some packages on your device:
 Some packages for some functionalities in the project:
 -   **1. Authentication:**  Jetstream - version ^3.0
 -   **2. Manage Image:**    Intervention/image - version ^2.7
--   **3. Card:**            Bumbummen99/shoppingcart - 
+-   **3. Card:**            Bumbummen99/shoppingcart - version ^4.2
+-   **4. Payment Gateway:** Stripe - version ^10.2

@@ -24,16 +24,33 @@
 		<a href="#" class="google-sign-in"><i class="fa fa-google"></i> Sign In with Google</a>
 	</div>
 
-    <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login')  }}">
+    <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login')  }} " id="loginForm">
         @csrf
+		<input type="hidden" name="form_name" value="login">
 		<div class="form-group">
 		    <label class="info-title" for="email">Email Address <span>*</span></label>
 		    <input type="email" id="email" class="form-control unicase-form-control text-input" name="email">
+			
+			
+			
+				<span class="invalid-feedback" role="alert" id="email_error">
+					
+				</span>
+			
+			
+			
 
 		</div>
 	  	<div class="form-group">
 		    <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
 		    <input type="password" id="password" name="password" class="form-control unicase-form-control text-input"  >
+			
+			
+				<span class="invalid-feedback" role="alert" id="password_error">
+					
+				</span>
+			
+			
 
 		</div>
 		<div class="radio outer-xs">
@@ -45,6 +62,7 @@
 
         </div>
 	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
+		
 	</form>
 </div>
 <!-- Sign-in -->
@@ -53,53 +71,59 @@
 <div class="col-md-6 col-sm-6 create-new-account">
 	<h4 class="checkout-subtitle">Create a new account</h4>
 	<p class="text title-tag-line">Create your new account.</p>
-	<form method="POST" action="{{ route('register') }}">
+	<form method="POST" action="{{ route('register') }}" name="register">
 		@csrf
+		<input type="hidden" name="form_name" value="register">
 		<div class="form-group">
 		    <label class="info-title" for="name">Name <span>*</span></label>
 		    <input type="text" id="name" name="name" class="form-control unicase-form-control text-input"  >
-			@error('name')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
+			<?php if($errors->has('name')): ?>
+				<span class="invalid-feedback" role="alert">
+					<strong><?php echo e($errors->first('name')); ?></strong>
+				</span>
+			<?php endif; ?>
 		</div>
 		<div class="form-group">
 	    	<label class="info-title" for="email">Email Address <span>*</span></label>
-	    	<input type="email" name="email" class="form-control unicase-form-control text-input" id="email" >
-			@error('email')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
+	    	<input type="email" name="register_email" class="form-control unicase-form-control text-input" id="email" >
+			
+			
+			<?php if($errors->has('email')): ?>
+				<span class="invalid-feedback" role="alert">
+					<strong><?php echo e($errors->first('email')); ?></strong>
+				</span>
+			<?php endif; ?>
+			
 		</div>
 
         <div class="form-group">
 		    <label class="info-title" for="phone">Phone Number <span>*</span></label>
 		    <input type="text" name="phone" class="form-control unicase-form-control text-input" id="phone" >
-			@error('phone')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
+			<?php if($errors->has('phone')): ?>
+				<span class="invalid-feedback" role="alert">
+					<strong><?php echo e($errors->first('phone')); ?></strong>
+				</span>
+			<?php endif; ?>
 		</div>
         <div class="form-group">
 		    <label class="info-title" for="password">Password <span>*</span></label>
 		    <input type="password" name="password" class="form-control unicase-form-control text-input" id="password" >
-			@error('password')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
+			
+			<?php if($errors->has('password')): ?>
+				<span class="invalid-feedback" role="alert">
+					<strong><?php echo e($errors->first('password')); ?></strong>
+				</span>
+			<?php endif; ?>
+			
 		</div>
          <div class="form-group">
 		    <label class="info-title" for="password_confirmation">Confirm Password <span>*</span></label>
 		    <input type="password" name="password_confirmation" class="form-control unicase-form-control text-input" id="password_confirmation" >
-			@error('password_confirmation')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
+			<?php if($errors->has('password_confirmation')): ?>
+				<span class="invalid-feedback" role="alert">
+					<strong><?php echo e($errors->first('password_confirmation')); ?></strong>
+				</span>
+			<?php endif; ?>
 		</div>
 	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
 	</form>
@@ -110,4 +134,33 @@
 		</div><!-- /.sigin-in-->
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
 @include('frontend.body.brands')
+
+
+<script>
+	 $('#loginForm').submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+                type: 'POST',
+                url: '/login',
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+                    // Handle success response
+                },
+				error: function(xhr, status, error) {
+					var errors = xhr.responseJSON.errors;
+					// console.log(errors);
+					$('#email_error').html(`<strong>${errors.email}</strong>`)
+					$('#password_error').html(`<strong>${errors.password}</strong>`)
+
+				}
+            });
+        });
+   
+</script>
+
 @endsection
