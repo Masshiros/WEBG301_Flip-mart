@@ -85,7 +85,7 @@
 		</div>
 		<div class="form-group">
 	    	<label class="info-title" for="email">Email Address <span>*</span></label>
-	    	<input type="email" name="register_email" class="form-control unicase-form-control text-input" id="email" >
+	    	<input type="email" name="email" class="form-control unicase-form-control text-input" id="email" >
 			
 			
 			<?php if($errors->has('email')): ?>
@@ -137,20 +137,21 @@
 
 
 <script>
+	$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
 	 $('#loginForm').submit(function (event) {
             event.preventDefault();
             var formData = $(this).serialize();
             $.ajax({
-				headers: {
-					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-				},
                 type: 'POST',
                 url: '/login',
                 data: formData,
                 success: function (response) {
-                    console.log(response);
-                    // Handle success response
-                },
+					window.location.href = '/dashboard';
+				},
 				error: function(xhr, status, error) {
 					var errors = xhr.responseJSON.errors;
 					// console.log(errors);
