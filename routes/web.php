@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\SocialiteController;
 
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
@@ -39,6 +40,23 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// Privacy Policy Route
+Route::get('privacy_policy', function(){
+    return '<h1>Privacy Policy</h1>';
+});
+
+// Facebook routes
+Route::get('login/facebook', [SocialiteController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [SocialiteController::class, 'handleFacebookCallback'])->name('login.facebook.callback');
+
+// Google routes
+Route::get('login/google', [SocialiteController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('login.google.callback');
+
+
+
+
 // LOGIN ROUTE
 Route::middleware('admin:admin')->group(function () {
     Route::get('admin/login', [AdminController::class, 'loginForm']);
@@ -207,7 +225,7 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::post('/update', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
             //5) Delete One Coupon
             Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
-            
+
 
         });
          // ADMIN SHIPPING ALL ROUTES
@@ -223,7 +241,7 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::post('/province/update', [ShippingAreaController::class, 'ProvinceUpdate'])->name('province.update');
             //5) Delete One Province
             Route::get('/province/delete/{id}', [ShippingAreaController::class, 'ProvinceDelete'])->name('province.delete');
-            
+
             // SHIP DISTRICT
             //1) Display All District
             Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
@@ -311,21 +329,21 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
     // FRONTEND REMOVE WISHLIST PRODUCT
     Route::get('/wishlist-remove/{product_id}', [WishlistController::class, 'RemoveWishlistProduct']);
 
-   
+
 });
 /////////////////////MY CART PAGE ALL ROUTES ////////////////
  // FRONTEND MYCART PAGE
  Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
-    
+
  // FRONTEND GET MYCART PRODUCT
  Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);
- 
+
  // FRONTEND REMOVE MYCART PRODUCT
  Route::get('/user/cart-remove/{id}', [CartPageController::class, 'RemoveCartProduct']);
- 
+
  // FRONTEND  MYCART PRODUCT INCREMENT QUANTITY
  Route::get('/cart-increment/{id}', [CartPageController::class, 'CartIncrement']);
- 
+
  // FRONTEND  MYCART PRODUCT DECREMENT QUANTITY
  Route::get('/cart-decrement/{id}', [CartPageController::class, 'CartDecrement']);
 
@@ -349,7 +367,7 @@ Route::post('/checkout/store',[CheckoutController::class,'CheckoutStore'])->name
 
 
 // FRONTEND ORDER
-Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'User'],function(){ 
+Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'User'],function(){
     // INSERT ORDER + ORDER DETAIL TO DB AND STRIPE
     Route::post('/stripe/order',[StripeController::class,'StripeOrder'])->name('stripe.order');
     // CASH ON DELIVERY
@@ -358,5 +376,5 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
     Route::get('/my-orders',[MainUserController::class,'MyOrders'])->name('my.orders');
     // READ ORDER DETAIL IN PROFILE
     Route::get('/order_details/{id}',[MainUserController::class,'OrderDetail']);
-    
+
 });

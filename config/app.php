@@ -179,6 +179,9 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+        // Used to register service providers and class aliases respectively
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
     ],
 
     /*
@@ -194,6 +197,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
     ])->toArray(),
 
 ];

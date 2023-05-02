@@ -20,8 +20,8 @@
 	<h4 class="">Sign in</h4>
 	<p class="">Hello, Welcome to your account.</p>
 	<div class="social-sign-in outer-top-xs">
-		<a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-		<a href="#" class="google-sign-in"><i class="fa fa-google"></i> Sign In with Google</a>
+        <a href="{{route('login.facebook')}}" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+		<a href="{{route('login.google')}}" class="google-sign-in"><i class="fa fa-google"></i> Sign In with Google</a>
 	</div>
 
     <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login')  }}">
@@ -102,6 +102,7 @@
 			@enderror
 		</div>
 	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
+
 	</form>
 
 

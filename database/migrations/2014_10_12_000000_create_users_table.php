@@ -21,6 +21,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('facebook_id')->nullable(); // Add the column for Facebook ID
+            $table->string('google_id')->nullable(); // Add the column for Google ID
             $table->timestamps();
         });
     }
