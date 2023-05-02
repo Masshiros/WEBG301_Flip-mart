@@ -22,6 +22,11 @@ class SocialiteController extends Controller
         $existingUser = User::where('email', $user->getEmail())->first();
 
         if ($existingUser) {
+            // Update the existing user's Facebook ID and profile photo
+            $existingUser->facebook_id = $user->getId();
+            $existingUser->profile_photo_path = $user->getAvatar();
+            $existingUser->save();
+
             // Log in the existing user
             Auth::login($existingUser);
         } else {
@@ -42,6 +47,7 @@ class SocialiteController extends Controller
         return redirect('dashboard');
     }
 
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
@@ -55,6 +61,11 @@ class SocialiteController extends Controller
         $existingUser = User::where('email', $user->getEmail())->first();
 
         if ($existingUser) {
+            // Update the existing user's Google ID and profile photo
+            $existingUser->google_id = $user->getId();
+            $existingUser->profile_photo_path = $user->getAvatar();
+            $existingUser->save();
+
             // Log in the existing user
             Auth::login($existingUser);
         } else {
@@ -73,6 +84,5 @@ class SocialiteController extends Controller
 
         // Redirect the user to the desired page after login
         return redirect('dashboard');
-
     }
 }
