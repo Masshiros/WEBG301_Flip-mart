@@ -30,6 +30,7 @@ class SocialiteController extends Controller
             $newUser->name = $user->getName();
             $newUser->email = $user->getEmail();
             $newUser->facebook_id = $user->getId();
+            $newUser->profile_photo_path = $user->getAvatar();
             $newUser->password = bcrypt('default_password'); // Set a default password
             $newUser->save();
 
@@ -40,7 +41,7 @@ class SocialiteController extends Controller
         // Redirect the user to the desired page after login
         return redirect('dashboard');
     }
-    
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
@@ -62,6 +63,7 @@ class SocialiteController extends Controller
             $newUser->name = $user->getName();
             $newUser->email = $user->getEmail();
             $newUser->google_id = $user->getId();
+            $newUser->profile_photo_path = $user->getAvatar();
             $newUser->password = bcrypt('default_password'); // Set a default password
             $newUser->save();
 
