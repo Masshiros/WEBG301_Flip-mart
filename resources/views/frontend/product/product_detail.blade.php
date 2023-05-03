@@ -179,7 +179,7 @@
 									<div class="form-group">
 										<label class="info-title control-label">Choose Color <span>*</span></label>
 										<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
-											<option selected="" disabled="">--Choose color--</option>
+											<option selected="" disabled="" value>--Choose color--</option>
 											@foreach($product_color_en as $color)
 											<option value="{{$color}}">{{ ucwords($color)}}</option>
 											@endforeach
@@ -193,7 +193,7 @@
 										@else
 										<label class="info-title control-label">Choose Size <span>*</span></label>
 										<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
-											<option selected="" disabled="">--Choose size--</option>
+											<option selected="" disabled="" value>--Choose size--</option>
 											@foreach($product_size_en as $size)
 											<option value="{{$size}}">{{ucwords($size)}}</option>
 											@endforeach

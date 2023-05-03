@@ -376,5 +376,7 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
     Route::get('/my-orders',[MainUserController::class,'MyOrders'])->name('my.orders');
     // READ ORDER DETAIL IN PROFILE
     Route::get('/order_details/{id}',[MainUserController::class,'OrderDetail']);
+    // DOWNLOAD INVOICE IN PROFILE
+    Route::get('/invoice_download/{id}',[MainUserController::class,'InvoiceDownload']);
 
 });
