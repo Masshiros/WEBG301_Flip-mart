@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {
@@ -19,7 +19,7 @@ class SocialiteController extends Controller
         $user = Socialite::driver('facebook')->user();
 
         // Check if the user already exists in your database
-        $existingUser = User::where('email', $user->getEmail())->first();
+        $existingUser = User::where('email_fb', $user->getEmail())->first();
 
         if ($existingUser) {
             // Update the existing user's Facebook ID and profile photo
@@ -33,7 +33,8 @@ class SocialiteController extends Controller
             // Create a new user account
             $newUser = new User();
             $newUser->name = $user->getName();
-            $newUser->email = $user->getEmail();
+            $newUser->email = $user->getId() . '@flip_mart.com';
+            $newUser->email_fb = $user->getEmail();
             $newUser->facebook_id = $user->getId();
             $newUser->profile_photo_path = $user->getAvatar();
             $newUser->password = bcrypt('default_password'); // Set a default password
@@ -47,7 +48,6 @@ class SocialiteController extends Controller
         return redirect('dashboard');
     }
 
-
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
@@ -58,8 +58,8 @@ class SocialiteController extends Controller
         $user = Socialite::driver('google')->user();
 
         // Check if the user already exists in your database
-        $existingUser = User::where('email', $user->getEmail())->first();
-
+        $existingUser = User::where('email_gg', $user->getEmail())->first();
+        // dd($existingUser);
         if ($existingUser) {
             // Update the existing user's Google ID and profile photo
             $existingUser->google_id = $user->getId();
@@ -72,7 +72,8 @@ class SocialiteController extends Controller
             // Create a new user account
             $newUser = new User();
             $newUser->name = $user->getName();
-            $newUser->email = $user->getEmail();
+            $newUser->email = $user->getId() . '@flip_mart.com';
+            $newUser->email_gg = $user->getEmail();
             $newUser->google_id = $user->getId();
             $newUser->profile_photo_path = $user->getAvatar();
             $newUser->password = bcrypt('default_password'); // Set a default password
