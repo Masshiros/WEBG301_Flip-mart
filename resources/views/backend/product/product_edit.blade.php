@@ -245,9 +245,9 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                    
-                                        <h5>Product Size Chinese <span class="text-danger">*</span></h5>
+                                        <h5>Product Size Cn <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="product_size_cn" class="form-control" value="{{$product->product_tags_cn}}" data-role="tagsinput" >
+                                            <input type="text" name="product_size_cn" class="form-control" value="{{$product->product_size_cn}}" data-role="tagsinput" >
                                             @error('product_size_cn')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -260,7 +260,7 @@
                                    
                                         <h5>Product Size Vn <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="product_size_vn" class="form-control" value="{{$product->product_tags_vn}}" data-role="tagsinput" >
+                                            <input type="text" name="product_size_vn" class="form-control" value="{{$product->product_size_vn}}" data-role="tagsinput" >
                                             @error('product_size_vn')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror

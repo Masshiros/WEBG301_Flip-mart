@@ -85,7 +85,7 @@
 		</div>
 		<div class="form-group">
 	    	<label class="info-title" for="email">Email Address <span>*</span></label>
-	    	<input type="email" name="email" class="form-control unicase-form-control text-input" id="email" >
+	    	<input type="text" name="email" class="form-control unicase-form-control text-input" id="email" >
 			
 			
 			<?php if($errors->has('email')): ?>
@@ -156,7 +156,7 @@
 					var errors = xhr.responseJSON.errors;
 					// console.log(errors);
 					$('#email_error').html(`<strong>${errors.email}</strong>`)
-					$('#password_error').html(`<strong>${errors.password}</strong>`)
+					$('#password_error').html(`<strong>${errors.password ? errors.password : 'Wrong Password or Gmail'}</strong>`)
 
 				}
             });
